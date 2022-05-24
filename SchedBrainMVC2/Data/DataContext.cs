@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using SchedBrainMVC2.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,5 +14,7 @@ namespace SchedBrainMVC2.Data
         {
             optionsBuilder.UseSqlServer("Data Source=localhost\\SQLEXPRESS; Initial Catalog=BDSchedBrain; Integrated Security=SSPI");
         }
+
+        public DbSet<Evento> Eventos { get; set; }
     }
 }

@@ -13,14 +13,21 @@ namespace SchedBrainMVC2.Model
         public int ID { get; set; }
         
         public string NomeEvento { get; set; }
+
         public string LocalEvento { get; set; }
+
         public string DescricaoEvento { get; set; }
+
         [DataType(DataType.Date)]
         public DateTime DataInicio { get; set; }
+
         [DataType(DataType.Date)]
         public DateTime DataTermino { get; set; }
+
         public string Periodicidade { get; set; }
+
         public string Status { get; set; }
+
         public string Foto { get; set; }
 
     }
