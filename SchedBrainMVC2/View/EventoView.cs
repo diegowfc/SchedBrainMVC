@@ -141,7 +141,17 @@ namespace SchedBrainMVC2.View
 
             if (erros == false)
             {
-                Evento evento = new Evento(txtNome.Text, txtLocal.Text, txtDescricao.Text, dtpDataInicio.Value, dtpDataTermino.Value, cboPeriodicidade.Text, status, contatos, pcbAnexo.Tag.ToString()!);
+                Evento evento = new Evento();
+                evento.NomeEvento = txtNome.Text.Trim();
+                evento.LocalEvento = txtLocal.Text.Trim();
+                evento.DescricaoEvento = txtDescricao.Text.Trim();
+                evento.DataInicio = dtpDataInicio.Value.Date;
+                evento.DataTermino = dtpDataTermino.Value.Date;
+                evento.Periodicidade = cboPeriodicidade.Text.Trim();
+                evento.Contato = lstContatos.Text.Trim();
+                evento.Status = status;
+                evento.Foto = pcbAnexo.Tag.ToString();
+
                 EventoController.Salvar(evento);
 
                 if (itemRepetido == false)
