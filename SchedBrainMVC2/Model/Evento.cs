@@ -26,9 +26,25 @@ namespace SchedBrainMVC2.Model
 
         public string Periodicidade { get; set; }
 
+        public string Contato { get; set; }
+
         public string Status { get; set; }
 
         public string Foto { get; set; }
 
+        public Evento(string nome, string local, string descricao, DateTime dataInicio, DateTime dataTermino, string periodicidade, string status, string contato, string imagem)
+        {
+            NomeEvento = nome;
+            LocalEvento = local;
+            DescricaoEvento = descricao;
+            DataInicio = dataInicio;
+            DataTermino = dataTermino;
+            Periodicidade = periodicidade;
+            Status = status;
+            Foto = imagem;
+            Contato = contato;
+        }
+
     }
+
 }

@@ -1,4 +1,5 @@
-﻿using SchedBrainMVC2.Model;
+﻿using SchedBrainMVC2.Controller;
+using SchedBrainMVC2.Model;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -140,13 +141,8 @@ namespace SchedBrainMVC2.View
 
             if (erros == false)
             {
-
-                foreach (string lista in lstContatos.SelectedItems)
-                {
-                    contatos += lista.ToString() + "; ";
-                }
-
-                //Evento evento = new Evento(txtNome.Text, txtLocal.Text, txtDescricao.Text, dtpDataInicio.Value, dtpDataTermino.Value, cboPeriodicidade.Text, status, contatos, pcbAnexo.Tag.ToString());
+                Evento evento = new Evento(txtNome.Text, txtLocal.Text, txtDescricao.Text, dtpDataInicio.Value, dtpDataTermino.Value, cboPeriodicidade.Text, status, contatos, pcbAnexo.Tag.ToString()!);
+                EventoController.Salvar(evento);
 
                 if (itemRepetido == false)
                 {
@@ -158,6 +154,37 @@ namespace SchedBrainMVC2.View
             }
         }
 
-       
+        private void pcbAnexo_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog open = new OpenFileDialog();
+            open.Filter = "Image Files(*.jpg; *.jpeg; *.png; *.BMP;)|*.jpg; *.jpeg; *.png; *.BMP;";
+            if (open.ShowDialog() == DialogResult.OK)
+            {
+                try
+                {
+                    pcbAnexo.Image = new Bitmap(open.FileName);
+                    imagemAlterada = true;
+                    pcbAnexo.Tag = open.FileName;
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("Não foi possível carregar a foto", "SchedBrain", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        private void btnLimpar_Click(object sender, EventArgs e)
+        {
+            imagemAlterada = false;
+            pcbAnexo.Image = global::SchedBrainMVC2.Properties.Resources.Foto;
+            txtLocal.Text = string.Empty;
+            txtNome.Text = string.Empty;
+            txtDescricao.Text = string.Empty;
+            cboPeriodicidade.SelectedIndex = 0;
+            dtpDataInicio.Value = DateTime.Now;
+            dtpDataTermino.Value = DateTime.Now;
+            rdoAndamento.Checked = false;
+            rdoConcluido.Checked = false;
+        }
     }
 }

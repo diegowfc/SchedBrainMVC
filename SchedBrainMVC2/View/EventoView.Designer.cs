@@ -47,6 +47,7 @@
             this.txtLocal = new System.Windows.Forms.TextBox();
             this.txtNome = new System.Windows.Forms.TextBox();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.btnLimpar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pcbAnexo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
@@ -54,10 +55,10 @@
             // rdoCancelado
             // 
             this.rdoCancelado.AutoSize = true;
-            this.rdoCancelado.Location = new System.Drawing.Point(202, 473);
+            this.rdoCancelado.Location = new System.Drawing.Point(210, 473);
             this.rdoCancelado.Name = "rdoCancelado";
             this.rdoCancelado.Size = new System.Drawing.Size(81, 19);
-            this.rdoCancelado.TabIndex = 56;
+            this.rdoCancelado.TabIndex = 9;
             this.rdoCancelado.TabStop = true;
             this.rdoCancelado.Text = "Cancelado";
             this.rdoCancelado.UseVisualStyleBackColor = true;
@@ -67,15 +68,15 @@
             // 
             this.lstContatos.FormattingEnabled = true;
             this.lstContatos.ItemHeight = 15;
-            this.lstContatos.Location = new System.Drawing.Point(2, 358);
+            this.lstContatos.Location = new System.Drawing.Point(10, 358);
             this.lstContatos.Name = "lstContatos";
             this.lstContatos.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple;
             this.lstContatos.Size = new System.Drawing.Size(279, 109);
-            this.lstContatos.TabIndex = 41;
+            this.lstContatos.TabIndex = 6;
             // 
             // txtPesquisar
             // 
-            this.txtPesquisar.Location = new System.Drawing.Point(309, 8);
+            this.txtPesquisar.Location = new System.Drawing.Point(325, 8);
             this.txtPesquisar.Name = "txtPesquisar";
             this.txtPesquisar.PlaceholderText = "Pesquise por Nome, Local, Datas, Status e Contatos";
             this.txtPesquisar.Size = new System.Drawing.Size(303, 23);
@@ -93,12 +94,12 @@
             // 
             // txtDescricao
             // 
-            this.txtDescricao.Location = new System.Drawing.Point(2, 186);
+            this.txtDescricao.Location = new System.Drawing.Point(10, 186);
             this.txtDescricao.Multiline = true;
             this.txtDescricao.Name = "txtDescricao";
             this.txtDescricao.PlaceholderText = "Descrição do evento";
             this.txtDescricao.Size = new System.Drawing.Size(281, 49);
-            this.txtDescricao.TabIndex = 43;
+            this.txtDescricao.TabIndex = 2;
             // 
             // flowLayoutPanel1
             // 
@@ -106,31 +107,31 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.flowLayoutPanel1.AutoScroll = true;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(309, 38);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(325, 38);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(714, 483);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(698, 483);
             this.flowLayoutPanel1.TabIndex = 53;
             // 
             // dtpDataTermino
             // 
-            this.dtpDataTermino.Location = new System.Drawing.Point(2, 300);
+            this.dtpDataTermino.Location = new System.Drawing.Point(10, 300);
             this.dtpDataTermino.Name = "dtpDataTermino";
             this.dtpDataTermino.Size = new System.Drawing.Size(281, 23);
-            this.dtpDataTermino.TabIndex = 45;
+            this.dtpDataTermino.TabIndex = 4;
             // 
             // dtpDataInicio
             // 
-            this.dtpDataInicio.Location = new System.Drawing.Point(2, 256);
+            this.dtpDataInicio.Location = new System.Drawing.Point(10, 256);
             this.dtpDataInicio.Name = "dtpDataInicio";
             this.dtpDataInicio.Size = new System.Drawing.Size(281, 23);
-            this.dtpDataInicio.TabIndex = 44;
+            this.dtpDataInicio.TabIndex = 3;
             // 
             // btnCadastrar
             // 
-            this.btnCadastrar.Location = new System.Drawing.Point(208, 498);
+            this.btnCadastrar.Location = new System.Drawing.Point(216, 498);
             this.btnCadastrar.Name = "btnCadastrar";
             this.btnCadastrar.Size = new System.Drawing.Size(75, 23);
-            this.btnCadastrar.TabIndex = 48;
+            this.btnCadastrar.TabIndex = 11;
             this.btnCadastrar.Text = "Salvar";
             this.btnCadastrar.UseVisualStyleBackColor = true;
             this.btnCadastrar.Click += new System.EventHandler(this.btnCadastrar_Click);
@@ -141,18 +142,19 @@
             this.pcbAnexo.Image = global::SchedBrainMVC2.Properties.Resources.Foto;
             this.pcbAnexo.Location = new System.Drawing.Point(10, 9);
             this.pcbAnexo.Name = "pcbAnexo";
-            this.pcbAnexo.Size = new System.Drawing.Size(271, 113);
+            this.pcbAnexo.Size = new System.Drawing.Size(281, 113);
             this.pcbAnexo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pcbAnexo.TabIndex = 52;
             this.pcbAnexo.TabStop = false;
+            this.pcbAnexo.Click += new System.EventHandler(this.pcbAnexo_Click);
             // 
             // rdoAndamento
             // 
             this.rdoAndamento.AutoSize = true;
-            this.rdoAndamento.Location = new System.Drawing.Point(88, 473);
+            this.rdoAndamento.Location = new System.Drawing.Point(96, 473);
             this.rdoAndamento.Name = "rdoAndamento";
             this.rdoAndamento.Size = new System.Drawing.Size(106, 19);
-            this.rdoAndamento.TabIndex = 49;
+            this.rdoAndamento.TabIndex = 8;
             this.rdoAndamento.TabStop = true;
             this.rdoAndamento.Text = "Em andamento";
             this.rdoAndamento.UseVisualStyleBackColor = true;
@@ -160,10 +162,10 @@
             // rdoConcluido
             // 
             this.rdoConcluido.AutoSize = true;
-            this.rdoConcluido.Location = new System.Drawing.Point(2, 473);
+            this.rdoConcluido.Location = new System.Drawing.Point(10, 473);
             this.rdoConcluido.Name = "rdoConcluido";
             this.rdoConcluido.Size = new System.Drawing.Size(80, 19);
-            this.rdoConcluido.TabIndex = 47;
+            this.rdoConcluido.TabIndex = 7;
             this.rdoConcluido.TabStop = true;
             this.rdoConcluido.Text = "Concluído";
             this.rdoConcluido.UseVisualStyleBackColor = true;
@@ -177,16 +179,16 @@
             "A CADA 2 SEMANAS",
             "A CADA MÊS",
             "A CADA ANO"});
-            this.cboPeriodicidade.Location = new System.Drawing.Point(2, 329);
+            this.cboPeriodicidade.Location = new System.Drawing.Point(10, 329);
             this.cboPeriodicidade.Name = "cboPeriodicidade";
             this.cboPeriodicidade.Size = new System.Drawing.Size(281, 23);
-            this.cboPeriodicidade.TabIndex = 46;
+            this.cboPeriodicidade.TabIndex = 5;
             this.cboPeriodicidade.Tag = "1";
             // 
             // lblDataTermino
             // 
             this.lblDataTermino.AutoSize = true;
-            this.lblDataTermino.Location = new System.Drawing.Point(2, 282);
+            this.lblDataTermino.Location = new System.Drawing.Point(10, 282);
             this.lblDataTermino.Name = "lblDataTermino";
             this.lblDataTermino.Size = new System.Drawing.Size(92, 15);
             this.lblDataTermino.TabIndex = 51;
@@ -195,7 +197,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(2, 238);
+            this.label1.Location = new System.Drawing.Point(10, 238);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(79, 15);
             this.label1.TabIndex = 50;
@@ -203,30 +205,41 @@
             // 
             // txtLocal
             // 
-            this.txtLocal.Location = new System.Drawing.Point(2, 157);
+            this.txtLocal.Location = new System.Drawing.Point(10, 157);
             this.txtLocal.Name = "txtLocal";
             this.txtLocal.PlaceholderText = "Local do evento";
             this.txtLocal.Size = new System.Drawing.Size(281, 23);
-            this.txtLocal.TabIndex = 42;
+            this.txtLocal.TabIndex = 1;
             // 
             // txtNome
             // 
-            this.txtNome.Location = new System.Drawing.Point(2, 128);
+            this.txtNome.Location = new System.Drawing.Point(10, 128);
             this.txtNome.Name = "txtNome";
             this.txtNome.PlaceholderText = "Nome do evento";
             this.txtNome.Size = new System.Drawing.Size(281, 23);
-            this.txtNome.TabIndex = 40;
+            this.txtNome.TabIndex = 0;
             // 
             // errorProvider1
             // 
             this.errorProvider1.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
             this.errorProvider1.ContainerControl = this;
             // 
+            // btnLimpar
+            // 
+            this.btnLimpar.Location = new System.Drawing.Point(135, 498);
+            this.btnLimpar.Name = "btnLimpar";
+            this.btnLimpar.Size = new System.Drawing.Size(75, 23);
+            this.btnLimpar.TabIndex = 10;
+            this.btnLimpar.Text = "Limpar";
+            this.btnLimpar.UseVisualStyleBackColor = true;
+            this.btnLimpar.Click += new System.EventHandler(this.btnLimpar_Click);
+            // 
             // EventoView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1035, 534);
+            this.Controls.Add(this.btnLimpar);
             this.Controls.Add(this.rdoCancelado);
             this.Controls.Add(this.lstContatos);
             this.Controls.Add(this.txtPesquisar);
@@ -274,5 +287,6 @@
         private TextBox txtLocal;
         private TextBox txtNome;
         private ErrorProvider errorProvider1;
+        private Button btnLimpar;
     }
 }
