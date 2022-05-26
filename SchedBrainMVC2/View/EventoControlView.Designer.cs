@@ -214,7 +214,7 @@
             this.Controls.Add(this.lblLocal);
             this.Controls.Add(this.lblNome);
             this.Name = "EventoControlView";
-            this.Size = new System.Drawing.Size(269, 257);
+            this.Size = new System.Drawing.Size(283, 252);
             this.ResumeLayout(false);
             this.PerformLayout();
 
