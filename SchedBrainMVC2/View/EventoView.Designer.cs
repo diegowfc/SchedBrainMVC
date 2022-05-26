@@ -175,10 +175,12 @@
             this.cboPeriodicidade.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboPeriodicidade.Items.AddRange(new object[] {
             "<<PERIODICIDADE>>",
-            "TODOS OS DIAS",
-            "A CADA 2 SEMANAS",
-            "A CADA MÊS",
-            "A CADA ANO"});
+            "Todos os dias",
+            "A cada semana",
+            "A cada 2 semanas",
+            "A cada mês",
+            "A cada ano",
+            "Uma vez"});
             this.cboPeriodicidade.Location = new System.Drawing.Point(10, 329);
             this.cboPeriodicidade.Name = "cboPeriodicidade";
             this.cboPeriodicidade.Size = new System.Drawing.Size(281, 23);

@@ -153,6 +153,9 @@ namespace SchedBrainMVC2.View
                 evento.Foto = pcbAnexo.Tag.ToString();
 
                 EventoController.Salvar(evento);
+                EventoControlView ec = new EventoControlView();
+                ec.SalvaEvento(evento);
+                flowLayoutPanel1.Controls.Add(ec);
 
                 if (itemRepetido == false)
                 {
@@ -185,16 +188,26 @@ namespace SchedBrainMVC2.View
 
         private void btnLimpar_Click(object sender, EventArgs e)
         {
-            imagemAlterada = false;
-            pcbAnexo.Image = global::SchedBrainMVC2.Properties.Resources.Foto;
-            txtLocal.Text = string.Empty;
-            txtNome.Text = string.Empty;
-            txtDescricao.Text = string.Empty;
-            cboPeriodicidade.SelectedIndex = 0;
-            dtpDataInicio.Value = DateTime.Now;
-            dtpDataTermino.Value = DateTime.Now;
-            rdoAndamento.Checked = false;
-            rdoConcluido.Checked = false;
+            DialogResult dr = MessageBox.Show(
+                "Deseja limpar todos os campos?", "SchedBrain", 
+                MessageBoxButtons.YesNo, 
+                MessageBoxIcon.Question, 
+                MessageBoxDefaultButton.Button2);
+
+            if (dr == DialogResult.Yes)
+            {
+                imagemAlterada = false;
+                pcbAnexo.Image = global::SchedBrainMVC2.Properties.Resources.Foto;
+                txtLocal.Text = string.Empty;
+                txtNome.Text = string.Empty;
+                txtDescricao.Text = string.Empty;
+                cboPeriodicidade.SelectedIndex = 0;
+                dtpDataInicio.Value = DateTime.Now;
+                dtpDataTermino.Value = DateTime.Now;
+                rdoAndamento.Checked = false;
+                rdoConcluido.Checked = false;
+                txtNome.Focus();
+            }
         }
     }
 }
