@@ -260,6 +260,7 @@
             this.Controls.Add(this.txtLocal);
             this.Controls.Add(this.txtNome);
             this.Name = "EventoView";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "EventoView";
             this.Load += new System.EventHandler(this.EventoView_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pcbAnexo)).EndInit();

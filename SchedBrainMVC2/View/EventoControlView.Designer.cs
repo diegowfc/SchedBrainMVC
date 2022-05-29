@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.lblContato = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.lnkFoto = new System.Windows.Forms.LinkLabel();
@@ -44,6 +45,11 @@
             this.lblDataInicio = new System.Windows.Forms.Label();
             this.lblLocal = new System.Windows.Forms.Label();
             this.lblNome = new System.Windows.Forms.Label();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.toolStripMenuConcluir = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuIEditar = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuExcluir = new System.Windows.Forms.ToolStripMenuItem();
+            this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // lblContato
@@ -192,11 +198,39 @@
             this.lblNome.TabIndex = 18;
             this.lblNome.Text = "Nome";
             // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuConcluir,
+            this.toolStripMenuIEditar,
+            this.toolStripMenuExcluir});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(120, 70);
+            // 
+            // toolStripMenuConcluir
+            // 
+            this.toolStripMenuConcluir.Name = "toolStripMenuConcluir";
+            this.toolStripMenuConcluir.Size = new System.Drawing.Size(119, 22);
+            this.toolStripMenuConcluir.Text = "Concluir";
+            // 
+            // toolStripMenuIEditar
+            // 
+            this.toolStripMenuIEditar.Name = "toolStripMenuIEditar";
+            this.toolStripMenuIEditar.Size = new System.Drawing.Size(119, 22);
+            this.toolStripMenuIEditar.Text = "Editar";
+            // 
+            // toolStripMenuExcluir
+            // 
+            this.toolStripMenuExcluir.Name = "toolStripMenuExcluir";
+            this.toolStripMenuExcluir.Size = new System.Drawing.Size(119, 22);
+            this.toolStripMenuExcluir.Text = "Excluir";
+            // 
             // EventoControlView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.ContextMenuStrip = this.contextMenuStrip1;
             this.Controls.Add(this.lblContato);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.lnkFoto);
@@ -215,6 +249,7 @@
             this.Controls.Add(this.lblNome);
             this.Name = "EventoControlView";
             this.Size = new System.Drawing.Size(283, 252);
+            this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -238,5 +273,9 @@
         private Label lblDataInicio;
         private Label lblLocal;
         private Label lblNome;
+        private ContextMenuStrip contextMenuStrip1;
+        private ToolStripMenuItem toolStripMenuConcluir;
+        private ToolStripMenuItem toolStripMenuIEditar;
+        private ToolStripMenuItem toolStripMenuExcluir;
     }
 }

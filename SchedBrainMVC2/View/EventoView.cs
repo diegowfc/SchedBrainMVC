@@ -24,6 +24,7 @@ namespace SchedBrainMVC2.View
             cboPeriodicidade.SelectedIndex = 0;
             txtDescricao.ScrollBars = ScrollBars.Vertical;
             txtNome.Focus();
+            preenchePainel();
         }
 
         bool imagemAlterada = false;
@@ -34,7 +35,7 @@ namespace SchedBrainMVC2.View
         public void limpaCampo()
         {
             imagemAlterada = false;
-            //pcbAnexo.Image = global::SchedBrain.Properties.Resources.Foto;
+            pcbAnexo.Image = global::SchedBrainMVC2.Properties.Resources.Foto;
             txtLocal.Text = string.Empty;
             txtNome.Text = string.Empty;
             txtDescricao.Text = string.Empty;
@@ -46,9 +47,35 @@ namespace SchedBrainMVC2.View
             txtNome.Focus();
         }
 
+        /// <summary>
+        /// Preenche o painel com os eventos previamente cadastrados
+        /// </summary>
+        public void preenchePainel()
+        {
+            List<Evento> listaEventos = new List<Evento>();
+            listaEventos = EventoController.ListaEvento();
+
+            foreach(Evento evento in listaEventos)
+            {
+                EventoControlView ec = new EventoControlView();
+                ec.SalvaEvento(evento);
+                flowLayoutPanel1.Controls.Add(ec);
+            }
+        }
+
+        /// <summary>
+        /// Preenche os campos de inserção para que o usuário possa editar alguma informação
+        /// </summary>
+        /// <param name="_nomeEvento"></param>
+        /// <param name="_localEvento"></param>
+        /// <param name="descricao"></param>
+        /// <param name="inicio"></param>
+        /// <param name="termino"></param>
+        /// <param name="periodicidade"></param>
+        /// <param name="status"></param>
+        /// <param name="foto"></param>
         public void editaCampo(string _nomeEvento, string _localEvento, string descricao, DateTime inicio, DateTime termino, string periodicidade, string status, string foto)
         {
-
             //eventoAlvo = eventos[_nomeEvento].Nome;
             imagemAlterada = true;
             rdoCancelado.Visible = true;
@@ -152,7 +179,7 @@ namespace SchedBrainMVC2.View
                 evento.Status = status;
                 evento.Foto = pcbAnexo.Tag.ToString();
 
-                EventoController.Salvar(evento);
+                EventoController.InsereEvento(evento);
                 EventoControlView ec = new EventoControlView();
                 ec.SalvaEvento(evento);
                 flowLayoutPanel1.Controls.Add(ec);
@@ -195,19 +222,7 @@ namespace SchedBrainMVC2.View
                 MessageBoxDefaultButton.Button2);
 
             if (dr == DialogResult.Yes)
-            {
-                imagemAlterada = false;
-                pcbAnexo.Image = global::SchedBrainMVC2.Properties.Resources.Foto;
-                txtLocal.Text = string.Empty;
-                txtNome.Text = string.Empty;
-                txtDescricao.Text = string.Empty;
-                cboPeriodicidade.SelectedIndex = 0;
-                dtpDataInicio.Value = DateTime.Now;
-                dtpDataTermino.Value = DateTime.Now;
-                rdoAndamento.Checked = false;
-                rdoConcluido.Checked = false;
-                txtNome.Focus();
-            }
+                limpaCampo();
         }
     }
 }
