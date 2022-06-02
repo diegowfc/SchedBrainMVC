@@ -37,6 +37,13 @@ namespace SchedBrainMVC2.Controller
             Context.SaveChanges();
         }
 
+        internal static void ExcluiEvento(string nome)
+        {
+            Evento eventoAlvo = Context.Eventos.FirstOrDefault(x => x.NomeEvento == nome)!;
+            Context.Eventos.Remove(eventoAlvo);
+            Context.SaveChanges();
+        }
+
         internal static List<Evento> ListaEvento()
         {
             return Context.Eventos.OrderBy(x => x.DataInicio).ThenBy(x => x.DataTermino).ToList();

@@ -205,25 +205,26 @@
             this.toolStripMenuIEditar,
             this.toolStripMenuExcluir});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(120, 70);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(181, 92);
             // 
             // toolStripMenuConcluir
             // 
             this.toolStripMenuConcluir.Name = "toolStripMenuConcluir";
-            this.toolStripMenuConcluir.Size = new System.Drawing.Size(119, 22);
+            this.toolStripMenuConcluir.Size = new System.Drawing.Size(180, 22);
             this.toolStripMenuConcluir.Text = "Concluir";
             // 
             // toolStripMenuIEditar
             // 
             this.toolStripMenuIEditar.Name = "toolStripMenuIEditar";
-            this.toolStripMenuIEditar.Size = new System.Drawing.Size(119, 22);
+            this.toolStripMenuIEditar.Size = new System.Drawing.Size(180, 22);
             this.toolStripMenuIEditar.Text = "Editar";
             // 
             // toolStripMenuExcluir
             // 
             this.toolStripMenuExcluir.Name = "toolStripMenuExcluir";
-            this.toolStripMenuExcluir.Size = new System.Drawing.Size(119, 22);
+            this.toolStripMenuExcluir.Size = new System.Drawing.Size(180, 22);
             this.toolStripMenuExcluir.Text = "Excluir";
+            this.toolStripMenuExcluir.Click += new System.EventHandler(this.toolStripMenuExcluir_Click);
             // 
             // EventoControlView
             // 

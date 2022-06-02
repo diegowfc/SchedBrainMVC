@@ -261,7 +261,7 @@
             this.Controls.Add(this.txtNome);
             this.Name = "EventoView";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "EventoView";
+            this.Text = "Cadastro de evento";
             this.Load += new System.EventHandler(this.EventoView_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pcbAnexo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();

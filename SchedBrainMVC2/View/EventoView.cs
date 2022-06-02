@@ -52,12 +52,11 @@ namespace SchedBrainMVC2.View
         /// </summary>
         public void preenchePainel()
         {
-            List<Evento> listaEventos = new List<Evento>();
-            listaEventos = EventoController.ListaEvento();
+            List<Evento> listaEventos = EventoController.ListaEvento();
 
             foreach(Evento evento in listaEventos)
             {
-                EventoControlView ec = new EventoControlView();
+                EventoControlView ec = new EventoControlView(flowLayoutPanel1);
                 ec.SalvaEvento(evento);
                 flowLayoutPanel1.Controls.Add(ec);
             }
@@ -180,7 +179,7 @@ namespace SchedBrainMVC2.View
                 evento.Foto = pcbAnexo.Tag.ToString();
 
                 EventoController.InsereEvento(evento);
-                EventoControlView ec = new EventoControlView();
+                EventoControlView ec = new EventoControlView(flowLayoutPanel1);
                 ec.SalvaEvento(evento);
                 flowLayoutPanel1.Controls.Add(ec);
 

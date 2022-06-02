@@ -1,4 +1,6 @@
-﻿using SchedBrainMVC2.Model;
+﻿using SchedBrainMVC2.Controller;
+using SchedBrainMVC2.Data;
+using SchedBrainMVC2.Model;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,9 +15,27 @@ namespace SchedBrainMVC2.View
 {
     public partial class EventoControlView : UserControl
     {
-        public EventoControlView()
+        Control painel = new Control();
+
+        public EventoControlView(FlowLayoutPanel flp)
         {
             InitializeComponent();
+            painel = flp;
+        }
+
+        /// <summary>
+        /// Atualiza o painel após alguma ação do usuário
+        /// </summary>
+        public void AtualizaPainel()
+        {
+            List<Evento> listaEventos = EventoController.ListaEvento();
+
+            foreach (Evento evento in listaEventos)
+            {
+                EventoControlView ec = new EventoControlView(painel as FlowLayoutPanel);
+                ec.SalvaEvento(evento);
+                painel.Controls.Add(ec);
+            }
         }
 
         public string NomeEvento
@@ -93,7 +113,29 @@ namespace SchedBrainMVC2.View
 
         private void lnkFoto_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
+            try
+            {
+                FotoView formExibe = new FotoView(Foto);
+                formExibe.ShowDialog();
+            }
+            catch (Exception)
+            {
+                return;
+            }
+        }
 
+        private void toolStripMenuExcluir_Click(object sender, EventArgs e)
+        {
+            DialogResult dr = MessageBox.Show(
+              "Você realmente deseja excluir esse evento?", "SchedBrain",
+              MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2);
+
+            if (dr == DialogResult.Yes)
+            {
+                EventoController.ExcluiEvento(NomeEvento);
+                painel.Controls.Clear();
+                AtualizaPainel();
+            }
         }
     }
 }
