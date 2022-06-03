@@ -151,5 +151,12 @@ namespace SchedBrainMVC2.View
                 AtualizaPainel();
             }
         }
+
+        private void toolStripMenuIEditar_Click(object sender, EventArgs e)
+        {
+            EventoView f1 = (EventoView)FindForm();
+            string eventoEditado = NomeEvento;
+            f1.editaCampo(NomeEvento, LocalEvento, DescricaoEvento, DataInicio, DataTermino, PeriodicidadeEvento, StatusEvento, Foto, eventoEditado);
+        }
     }
 }

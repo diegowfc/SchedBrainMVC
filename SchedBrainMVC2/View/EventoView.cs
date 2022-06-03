@@ -28,6 +28,7 @@ namespace SchedBrainMVC2.View
         }
 
         bool imagemAlterada = false;
+        string eventoAlvo;
 
         /// <summary>
         /// Limpa os campos de entrada após a inserção de um novo evento.
@@ -53,6 +54,7 @@ namespace SchedBrainMVC2.View
         public void preenchePainel()
         {
             List<Evento> listaEventos = EventoController.ListaEvento();
+            flowLayoutPanel1.Controls.Clear();
 
             foreach(Evento evento in listaEventos)
             {
@@ -73,9 +75,9 @@ namespace SchedBrainMVC2.View
         /// <param name="periodicidade"></param>
         /// <param name="status"></param>
         /// <param name="foto"></param>
-        public void editaCampo(string _nomeEvento, string _localEvento, string descricao, DateTime inicio, DateTime termino, string periodicidade, string status, string foto)
+        public void editaCampo(string nomeEvento, string localEvento, string descricao, DateTime inicio, DateTime termino, string periodicidade, string status, string foto, string eventoEditado)
         {
-            //eventoAlvo = eventos[_nomeEvento].Nome;
+            eventoAlvo = eventoEditado;
             imagemAlterada = true;
             rdoCancelado.Visible = true;
             pcbAnexo.Tag = foto.ToString();
@@ -91,8 +93,8 @@ namespace SchedBrainMVC2.View
                 pcbAnexo.Image.Tag = "";
             }
 
-            txtNome.Text = _nomeEvento;
-            txtLocal.Text = _localEvento;
+            txtNome.Text = nomeEvento;
+            txtLocal.Text = localEvento;
             txtDescricao.Text = descricao;
             dtpDataInicio.Value = inicio;
             dtpDataTermino.Value = termino;
@@ -108,7 +110,7 @@ namespace SchedBrainMVC2.View
         private void btnCadastrar_Click(object sender, EventArgs e)
         {
             errorProvider1.Clear();
-            bool erros = false, itemRepetido = false;
+            bool erros = false;
             string status, contatos = "";
             rdoCancelado.Visible = false;
 
@@ -167,6 +169,9 @@ namespace SchedBrainMVC2.View
 
             if (erros == false)
             {
+                if(eventoAlvo != null)
+                    EventoController.ExcluiEvento(eventoAlvo);
+
                 Evento evento = new Evento();
                 evento.NomeEvento = txtNome.Text.Trim();
                 evento.LocalEvento = txtLocal.Text.Trim();
@@ -179,17 +184,12 @@ namespace SchedBrainMVC2.View
                 evento.Foto = pcbAnexo.Tag.ToString();
 
                 EventoController.InsereEvento(evento);
-                EventoControlView ec = new EventoControlView(flowLayoutPanel1);
-                ec.SalvaEvento(evento);
-                flowLayoutPanel1.Controls.Add(ec);
+                preenchePainel();
 
-                if (itemRepetido == false)
-                {
-                    DialogResult dr = MessageBox.Show("Evento salvo com sucesso!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                DialogResult dr = MessageBox.Show("Evento salvo com sucesso!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                    if (dr == DialogResult.OK)
-                        limpaCampo();
-                }
+                if (dr == DialogResult.OK)
+                    limpaCampo();
             }
         }
 
