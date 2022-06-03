@@ -212,6 +212,7 @@
             this.toolStripMenuConcluir.Name = "toolStripMenuConcluir";
             this.toolStripMenuConcluir.Size = new System.Drawing.Size(180, 22);
             this.toolStripMenuConcluir.Text = "Concluir";
+            this.toolStripMenuConcluir.Click += new System.EventHandler(this.toolStripMenuConcluir_Click);
             // 
             // toolStripMenuIEditar
             // 

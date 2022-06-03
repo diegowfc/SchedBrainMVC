@@ -137,5 +137,19 @@ namespace SchedBrainMVC2.View
                 AtualizaPainel();
             }
         }
+
+        private void toolStripMenuConcluir_Click(object sender, EventArgs e)
+        {
+            DialogResult dr = MessageBox.Show(
+              "Você realmente deseja concluir esse evento?", "SchedBrain",
+              MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2);
+
+            if (dr == DialogResult.Yes)
+            {
+                EventoController.ConcluiEvento(NomeEvento);
+                painel.Controls.Clear();
+                AtualizaPainel();
+            }
+        }
     }
 }

@@ -44,6 +44,14 @@ namespace SchedBrainMVC2.Controller
             Context.SaveChanges();
         }
 
+        internal static void ConcluiEvento(string nome)
+        {
+            Evento eventoAlvo = Context.Eventos.FirstOrDefault(x => x.NomeEvento == nome)!;
+            eventoAlvo.Status = "Concluido";
+            Context.Update(eventoAlvo);
+            Context.SaveChanges();
+        }
+
         internal static List<Evento> ListaEvento()
         {
             return Context.Eventos.OrderBy(x => x.DataInicio).ThenBy(x => x.DataTermino).ToList();
