@@ -223,5 +223,22 @@ namespace SchedBrainMVC2.View
             if (dr == DialogResult.Yes)
                 limpaCampo();
         }
+
+        private void txtPesquisar_TextChanged(object sender, EventArgs e)
+        {
+            foreach (EventoControlView ec in flowLayoutPanel1.Controls)
+            {
+                if (!ec.LocalEvento.ToLower().Contains(txtPesquisar.Text.ToLower())
+                    && !ec.StatusEvento.ToLower().Contains(txtPesquisar.Text.ToLower())
+                    && !ec.DataInicio.ToString().Contains(txtPesquisar.Text)
+                    && !ec.DataTermino.ToString().Contains(txtPesquisar.Text)
+                    && !ec.Contatos.ToString().Contains(txtPesquisar.Text)
+                    && !ec.NomeEvento.ToString().Contains(txtPesquisar.Text)
+                    )
+                    ec.Visible = false;
+                else
+                    ec.Visible = true;
+            }
+        }
     }
 }

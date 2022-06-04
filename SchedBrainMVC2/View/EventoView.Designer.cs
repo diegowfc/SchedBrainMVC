@@ -81,6 +81,7 @@
             this.txtPesquisar.PlaceholderText = "Pesquise por Nome, Local, Datas, Status e Contatos";
             this.txtPesquisar.Size = new System.Drawing.Size(303, 23);
             this.txtPesquisar.TabIndex = 55;
+            this.txtPesquisar.TextChanged += new System.EventHandler(this.txtPesquisar_TextChanged);
             // 
             // label2
             // 
