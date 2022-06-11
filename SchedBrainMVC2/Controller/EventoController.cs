@@ -52,6 +52,16 @@ namespace SchedBrainMVC2.Controller
             Context.SaveChanges();
         }
 
+        internal static List<Evento> retornaEventoAtual()
+        {
+            return Context.Eventos.Where(
+                x => x.DataTermino == DateTime.Today & x.Status == "Em Andamento" || 
+                ((x.DataTermino.Day - DateTime.Today.Day <= 3) 
+                && x.DataTermino.Month == DateTime.Today.Month 
+                && x.DataTermino.Year == DateTime.Today.Year && x.Status == "Em Andamento"))
+                .ToList();
+        }
+
         internal static List<Evento> ListaEvento()
         {
             return Context.Eventos.OrderBy(x => x.DataInicio).ThenBy(x => x.DataTermino).ToList();

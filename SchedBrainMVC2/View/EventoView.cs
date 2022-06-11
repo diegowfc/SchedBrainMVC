@@ -45,6 +45,7 @@ namespace SchedBrainMVC2.View
             dtpDataTermino.Value = DateTime.Now;
             rdoAndamento.Checked = false;
             rdoConcluido.Checked = false;
+            eventoAlvo = null;
             txtNome.Focus();
         }
 
