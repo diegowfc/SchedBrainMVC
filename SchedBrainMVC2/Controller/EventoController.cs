@@ -44,6 +44,14 @@ namespace SchedBrainMVC2.Controller
             Context.SaveChanges();
         }
 
+        internal static void EditaEvento(Evento evento)
+        {
+            ValidaEvento(evento);
+
+            Context.Eventos.Update(evento).
+            Context.SaveChanges();
+        }
+
         internal static void ConcluiEvento(string nome)
         {
             Evento eventoAlvo = Context.Eventos.FirstOrDefault(x => x.NomeEvento == nome)!;
@@ -51,6 +59,11 @@ namespace SchedBrainMVC2.Controller
             Context.Update(eventoAlvo);
             Context.SaveChanges();
         }
+
+        /// <summary>
+        /// Exibe os eventos que estão próximos do prazo de término.
+        /// </summary>
+        /// <returns></returns>
 
         internal static List<Evento> retornaEventoAtual()
         {
@@ -65,6 +78,16 @@ namespace SchedBrainMVC2.Controller
         internal static List<Evento> ListaEvento()
         {
             return Context.Eventos.OrderBy(x => x.DataInicio).ThenBy(x => x.DataTermino).ToList();
+        }
+
+        /// <summary>
+        /// Retorna o evento escolhido para edição.
+        /// </summary>
+        /// <param name="nomeEvento"></param>
+        /// <returns></returns>
+        internal static Evento retornaEvento(string nomeEvento)
+        {
+            return Context.Eventos.Where(x => x.NomeEvento == nomeEvento).FirstOrDefault();
         }
     }
 }

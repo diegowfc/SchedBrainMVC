@@ -260,6 +260,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtLocal);
             this.Controls.Add(this.txtNome);
+            this.MaximizeBox = false;
             this.Name = "EventoView";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Cadastro de evento";
