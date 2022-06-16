@@ -7,6 +7,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -19,7 +20,7 @@ namespace SchedBrainMVC2.View
             InitializeComponent();
         }
 
-        bool contatoEditado = false;
+        bool contatoEditado = false, imagemAlterada = false;
         Contato contatoAlvo;
 
         private void ContatoView_Load(object sender, EventArgs e)
@@ -38,7 +39,7 @@ namespace SchedBrainMVC2.View
             txtSobrenome.Text = string.Empty;
             txtApelido.Text = string.Empty;
             txtEmail.Text = string.Empty;
-            txtTelefone.Text = string.Empty;
+            mtxTelefone.Text = string.Empty;
             dtpDataNascimento.Value = DateTime.Now;
             rdoPessoal.Checked = false;
             rdoProfissional.Checked = false;
@@ -47,8 +48,9 @@ namespace SchedBrainMVC2.View
             txtNome.Focus();
             txtEditar.Text = string.Empty;
             txtPesquisar.Text = string.Empty;
-            
-            if(contatoEditado == false)
+            imagemAlterada = false;
+
+            if (contatoEditado == false)
             {
                 rdoPessoal.Enabled = true;
                 rdoProfissional.Enabled = true;
@@ -68,28 +70,28 @@ namespace SchedBrainMVC2.View
                     pcbAnexo.Tag = contatoAlvo.Imagem;
                     pcbAnexo.Image = new Bitmap(contatoAlvo.Imagem);
                 }
-
-                txtNome.Text = contatoAlvo.Nome;
-                txtSobrenome.Text = contatoAlvo.Sobrenome;
-                txtApelido.Text = contatoAlvo.Apelido;
-                txtEmail.Text = contatoAlvo.Email;
-                txtTelefone.Text = contatoAlvo.Telefone;
-                dtpDataNascimento.Value = contatoAlvo.Nascimento;
-                if (contatoAlvo.Favorito == true)
-                    chkFavorito.Checked = true;
-                if (contatoAlvo.Tipo == "Profissional")
-                    rdoProfissional.Checked = true;
-                else
-                    rdoPessoal.Checked = true;
-
-                rdoPessoal.Enabled = false;
-                rdoProfissional.Enabled = false;
             }
             catch (Exception)
             {
                 pcbAnexo.Image = Properties.Resources.Foto;
                 pcbAnexo.Image.Tag = "";
             }
+
+            txtNome.Text = contatoAlvo.Nome;
+            txtSobrenome.Text = contatoAlvo.Sobrenome;
+            txtApelido.Text = contatoAlvo.Apelido;
+            txtEmail.Text = contatoAlvo.Email;
+            mtxTelefone.Text = contatoAlvo.Telefone;
+            dtpDataNascimento.Value = contatoAlvo.Nascimento;
+            if (contatoAlvo.Favorito == true)
+                chkFavorito.Checked = true;
+            if (contatoAlvo.Tipo == "Profissional")
+                rdoProfissional.Checked = true;
+            else
+                rdoPessoal.Checked = true;
+
+            rdoPessoal.Enabled = false;
+            rdoProfissional.Enabled = false;
         }
 
         /// <summary>
@@ -133,15 +135,15 @@ namespace SchedBrainMVC2.View
                 erros = true;
             }
 
-            if (txtEmail.Text.Trim() == "")
+            if (!Regex.IsMatch(txtEmail.Text.Trim(), @"^[\w!#$%&'*+\-/=?\^_`{|}~]+(\.[\w!#$%&'*+\-/=?\^_`{|}~]+)*@((([\-\w]+\.)+[a-zA-Z]{2,4})|(([0-9]{1,3}\.){3}[0-9]{1,3}))\z"))
             {
-                errorProviderContato.SetError(txtEmail, "Campo deve ser preenchido!");
+                errorProviderContato.SetError(txtEmail, "Digite um email válido!");
                 erros = true;
             }
 
-            if (txtTelefone.Text.Trim() == "")
+            if (!mtxTelefone.MaskCompleted)
             {
-                errorProviderContato.SetError(txtTelefone, "Campo deve ser preenchido!");
+                errorProviderContato.SetError(mtxTelefone, "Digite um número válido!");
                 erros = true;
             }
 
@@ -157,8 +159,19 @@ namespace SchedBrainMVC2.View
                 erros = true;
             }
 
+            if (ContatoController.ListaContatos().Count > 0)
+            {
+                if (txtApelido.Text == ContatoController.retornaContato(txtApelido.Text).Apelido)
+                {
+                    errorProviderContato.SetError(txtApelido, "Este apelido já existe no sistema!");
+                    erros = true;
+                }
+            }
+
             if (chkFavorito.Checked == true)
                 favorito = true;
+            else
+                favorito = false;
 
             if (rdoPessoal.Checked)
                 tipo = "Pessoal";
@@ -174,27 +187,29 @@ namespace SchedBrainMVC2.View
                     contato.Nome = txtNome.Text.Trim();
                     contato.Sobrenome = txtSobrenome.Text.Trim();
                     contato.Apelido = txtApelido.Text.Trim();
-                    contato.Telefone = txtTelefone.Text.Trim();
+                    contato.Telefone = mtxTelefone.Text.Trim();
                     contato.Email = txtEmail.Text.Trim();
                     contato.Nascimento = dtpDataNascimento.Value.Date;
                     contato.Tipo = tipo;
                     contato.Favorito = favorito;
-                    contato.Imagem = pcbAnexo.Tag.ToString();
+                    if (imagemAlterada == true)
+                        contato.Imagem = pcbAnexo.Tag.ToString();
                 }
                 else
                 {
                     contatoAlvo.Nome = txtNome.Text.Trim();
                     contatoAlvo.Sobrenome = txtSobrenome.Text.Trim();
                     contatoAlvo.Apelido = txtApelido.Text.Trim();
-                    contatoAlvo.Telefone = txtTelefone.Text.Trim();
+                    contatoAlvo.Telefone = mtxTelefone.Text.Trim();
                     contatoAlvo.Email = txtEmail.Text.Trim();
                     contatoAlvo.Nascimento = dtpDataNascimento.Value.Date;
                     contatoAlvo.Tipo = tipo;
-                    contato.Favorito = favorito;
-                    contatoAlvo.Imagem = pcbAnexo.Tag.ToString();
+                    contatoAlvo.Favorito = favorito;
+                    if (imagemAlterada == true)
+                        contatoAlvo.Imagem = pcbAnexo.Tag.ToString();
                 }
 
-                if(contatoAlvo == null)
+                if (contatoAlvo == null)
                     ContatoController.InsereContato(contato);
                 else
                     ContatoController.EditaContato(contatoAlvo);
@@ -217,6 +232,7 @@ namespace SchedBrainMVC2.View
                 {
                     pcbAnexo.Image = new Bitmap(open.FileName);
                     pcbAnexo.Tag = open.FileName;
+                    imagemAlterada = true;
                 }
                 catch (Exception)
                 {
@@ -282,9 +298,9 @@ namespace SchedBrainMVC2.View
                     if (!cc.Telefone.ToLower().Contains(txtPesquisar.Text.ToLower())
                         && !cc.Email.ToLower().Contains(txtPesquisar.Text.ToLower())
                         && !cc.DataNascimento.ToString().Contains(txtPesquisar.Text)
-                        && !cc.Apelido.ToString().Contains(txtPesquisar.Text)
-                        && !cc.Sobrenome.ToString().Contains(txtPesquisar.Text)
-                        && !cc.Nome.ToString().Contains(txtPesquisar.Text)
+                        && !cc.Apelido.ToString().Contains(txtPesquisar.Text.ToLower())
+                        && !cc.Sobrenome.ToString().Contains(txtPesquisar.Text.ToLower())
+                        && !cc.Nome.ToString().Contains(txtPesquisar.Text.ToLower())
                         && !cc.Tipo.ToString().Contains(txtPesquisar.Text)
                         )
                         cc.Visible = false;

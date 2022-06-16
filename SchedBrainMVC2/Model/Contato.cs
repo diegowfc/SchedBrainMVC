@@ -20,7 +20,7 @@ namespace SchedBrainMVC2.Model
 
         public string Email { get; set; }
 
-        public string Imagem { get; set; }
+        public string? Imagem { get; set; }
 
         public string Telefone { get; set; }
 

@@ -42,9 +42,11 @@
             // 
             // pcbFoto
             // 
+            this.pcbFoto.Image = global::SchedBrainMVC2.Properties.Resources.icone;
             this.pcbFoto.Location = new System.Drawing.Point(3, 58);
             this.pcbFoto.Name = "pcbFoto";
             this.pcbFoto.Size = new System.Drawing.Size(161, 121);
+            this.pcbFoto.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pcbFoto.TabIndex = 0;
             this.pcbFoto.TabStop = false;
             // 

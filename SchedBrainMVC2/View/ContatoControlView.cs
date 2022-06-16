@@ -96,6 +96,8 @@ namespace SchedBrainMVC2.View
 
             if (contato.Favorito == true)
                 txtFavorito.Visible = true;
+            else
+                txtFavorito.Visible = false;
 
             try
             {
@@ -103,7 +105,7 @@ namespace SchedBrainMVC2.View
             }
             catch (Exception)
             {
-                MessageBox.Show($"Foto do contato {contato.Nome} não foi encontrada!", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                pcbFoto.Image = global::SchedBrainMVC2.Properties.Resources.icone;
             }
         }
     }

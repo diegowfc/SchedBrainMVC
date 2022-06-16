@@ -31,6 +31,7 @@ namespace SchedBrainMVC2.View
             List<Contato> listaContatos = ContatoController.retornaFavoritos();
 
             flpEventoPrincipal.Controls.Clear();
+            flpContatoPrincipal.Controls.Clear();
 
             foreach (Evento evento in listaEventos)
             {

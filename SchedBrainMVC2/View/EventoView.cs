@@ -19,9 +19,6 @@ namespace SchedBrainMVC2.View
             InitializeComponent();
         }
 
-        bool imagemAlterada = false;
-        Evento eventoAlvo;
-
         private void EventoView_Load(object sender, EventArgs e)
         {
             cboPeriodicidade.SelectedIndex = 0;
@@ -30,10 +27,13 @@ namespace SchedBrainMVC2.View
             preenchePainel();
         }
 
+        bool imagemAlterada = false;
+        string eventoAlvo;
+
         /// <summary>
         /// Limpa os campos de entrada após a inserção de um novo evento.
         /// </summary>
-        public void resetaFormulario()
+        public void limpaCampo()
         {
             imagemAlterada = false;
             pcbAnexo.Image = global::SchedBrainMVC2.Properties.Resources.Foto;
@@ -45,6 +45,7 @@ namespace SchedBrainMVC2.View
             dtpDataTermino.Value = DateTime.Now;
             rdoAndamento.Checked = false;
             rdoConcluido.Checked = false;
+            eventoAlvo = null;
             txtNome.Focus();
         }
 
@@ -56,7 +57,7 @@ namespace SchedBrainMVC2.View
             List<Evento> listaEventos = EventoController.ListaEvento();
             flowLayoutPanel1.Controls.Clear();
 
-            foreach(Evento evento in listaEventos)
+            foreach (Evento evento in listaEventos)
             {
                 EventoControlView ec = new EventoControlView(flowLayoutPanel1);
                 ec.SalvaEvento(evento);
@@ -77,8 +78,7 @@ namespace SchedBrainMVC2.View
         /// <param name="foto"></param>
         public void editaCampo(string nomeEvento, string localEvento, string descricao, DateTime inicio, DateTime termino, string periodicidade, string status, string foto, string eventoEditado)
         {
-            eventoAlvo = EventoController.retornaEvento(eventoEditado);
-
+            eventoAlvo = eventoEditado;
             imagemAlterada = true;
             rdoCancelado.Visible = true;
             pcbAnexo.Tag = foto.ToString();
@@ -114,6 +114,7 @@ namespace SchedBrainMVC2.View
             bool erros = false;
             string status, contatos = "";
             rdoCancelado.Visible = false;
+
 
             pcbAnexo.WaitOnLoad = imagemAlterada;
 
@@ -153,6 +154,7 @@ namespace SchedBrainMVC2.View
                 erros = true;
             }
 
+
             if (imagemAlterada == false)
             {
                 errorProvider1.SetError(pcbAnexo, "Escolha uma foto!");
@@ -168,42 +170,27 @@ namespace SchedBrainMVC2.View
 
             if (erros == false)
             {
+                if (eventoAlvo != null)
+                    EventoController.ExcluiEvento(eventoAlvo);
+
                 Evento evento = new Evento();
+                evento.NomeEvento = txtNome.Text.Trim();
+                evento.LocalEvento = txtLocal.Text.Trim();
+                evento.DescricaoEvento = txtDescricao.Text.Trim();
+                evento.DataInicio = dtpDataInicio.Value.Date;
+                evento.DataTermino = dtpDataTermino.Value.Date;
+                evento.Periodicidade = cboPeriodicidade.Text.Trim();
+                evento.Contato = lstContatos.Text.Trim();
+                evento.Status = status;
+                evento.Foto = pcbAnexo.Tag.ToString();
 
-                if (eventoAlvo == null)
-                {
-                    evento.NomeEvento = txtNome.Text.Trim();
-                    evento.LocalEvento = txtLocal.Text.Trim();
-                    evento.DescricaoEvento = txtDescricao.Text.Trim();
-                    evento.DataInicio = dtpDataInicio.Value.Date;
-                    evento.DataTermino = dtpDataTermino.Value.Date;
-                    evento.Periodicidade = cboPeriodicidade.Text.Trim();
-                    evento.Contato = lstContatos.Text.Trim();
-                    evento.Status = status;
-                    evento.Foto = pcbAnexo.Tag.ToString();
-                }
-                else
-                {
-                    eventoAlvo.NomeEvento = txtNome.Text.Trim();
-                    eventoAlvo.LocalEvento = txtLocal.Text.Trim();
-                    eventoAlvo.DescricaoEvento = txtDescricao.Text.Trim();
-                    eventoAlvo.DataInicio = dtpDataInicio.Value.Date;
-                    eventoAlvo.DataTermino = dtpDataTermino.Value.Date;
-                    eventoAlvo.Periodicidade = cboPeriodicidade.Text.Trim();
-                    eventoAlvo.Contato = lstContatos.Text.Trim();
-                    eventoAlvo.Status = status;
-                    eventoAlvo.Foto = pcbAnexo.Tag.ToString();
-                }
-
-                if (eventoAlvo == null)
-                    EventoController.InsereEvento(evento);
-                else
-                    EventoController.EditaEvento(eventoAlvo);
-
+                EventoController.InsereEvento(evento);
                 preenchePainel();
+
                 DialogResult dr = MessageBox.Show("Evento salvo com sucesso!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                resetaFormulario();
-                eventoAlvo = null;
+
+                if (dr == DialogResult.OK)
+                    limpaCampo();
             }
         }
 
@@ -229,13 +216,13 @@ namespace SchedBrainMVC2.View
         private void btnLimpar_Click(object sender, EventArgs e)
         {
             DialogResult dr = MessageBox.Show(
-                "Deseja limpar todos os campos?", "SchedBrain", 
-                MessageBoxButtons.YesNo, 
-                MessageBoxIcon.Question, 
+                "Deseja limpar todos os campos?", "SchedBrain",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question,
                 MessageBoxDefaultButton.Button2);
 
             if (dr == DialogResult.Yes)
-                resetaFormulario();
+                limpaCampo();
         }
 
         private void txtPesquisar_TextChanged(object sender, EventArgs e)

@@ -42,7 +42,6 @@
             this.rdoPessoal = new System.Windows.Forms.RadioButton();
             this.txtApelido = new System.Windows.Forms.TextBox();
             this.txtEmail = new System.Windows.Forms.TextBox();
-            this.txtTelefone = new System.Windows.Forms.TextBox();
             this.chkFavorito = new System.Windows.Forms.CheckBox();
             this.errorProviderContato = new System.Windows.Forms.ErrorProvider(this.components);
             this.btnExcluir = new System.Windows.Forms.Button();
@@ -50,6 +49,7 @@
             this.btnEditar = new System.Windows.Forms.Button();
             this.txtEditar = new System.Windows.Forms.TextBox();
             this.chkPesquisa = new System.Windows.Forms.CheckBox();
+            this.mtxTelefone = new System.Windows.Forms.MaskedTextBox();
             ((System.ComponentModel.ISupportInitialize)(this.pcbAnexo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderContato)).BeginInit();
             this.SuspendLayout();
@@ -175,14 +175,6 @@
             this.txtEmail.Size = new System.Drawing.Size(278, 23);
             this.txtEmail.TabIndex = 3;
             // 
-            // txtTelefone
-            // 
-            this.txtTelefone.Location = new System.Drawing.Point(9, 247);
-            this.txtTelefone.Name = "txtTelefone";
-            this.txtTelefone.PlaceholderText = "Telefone do contato";
-            this.txtTelefone.Size = new System.Drawing.Size(278, 23);
-            this.txtTelefone.TabIndex = 4;
-            // 
             // chkFavorito
             // 
             this.chkFavorito.AutoSize = true;
@@ -247,18 +239,26 @@
             this.chkPesquisa.Text = "Apenas favoritos";
             this.chkPesquisa.UseVisualStyleBackColor = true;
             // 
+            // mtxTelefone
+            // 
+            this.mtxTelefone.Location = new System.Drawing.Point(9, 247);
+            this.mtxTelefone.Mask = "(99) 00000-0000";
+            this.mtxTelefone.Name = "mtxTelefone";
+            this.mtxTelefone.Size = new System.Drawing.Size(278, 23);
+            this.mtxTelefone.TabIndex = 4;
+            // 
             // ContatoView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(963, 451);
+            this.Controls.Add(this.mtxTelefone);
             this.Controls.Add(this.chkPesquisa);
             this.Controls.Add(this.txtEditar);
             this.Controls.Add(this.btnEditar);
             this.Controls.Add(this.btnPesquisar);
             this.Controls.Add(this.btnExcluir);
             this.Controls.Add(this.chkFavorito);
-            this.Controls.Add(this.txtTelefone);
             this.Controls.Add(this.txtEmail);
             this.Controls.Add(this.txtApelido);
             this.Controls.Add(this.btnLimpar);
@@ -298,7 +298,6 @@
         private RadioButton rdoPessoal;
         private TextBox txtApelido;
         private TextBox txtEmail;
-        private TextBox txtTelefone;
         private CheckBox chkFavorito;
         private ErrorProvider errorProviderContato;
         private Button btnEditar;
@@ -306,5 +305,6 @@
         private Button btnExcluir;
         private TextBox txtEditar;
         private CheckBox chkPesquisa;
+        private MaskedTextBox mtxTelefone;
     }
 }
