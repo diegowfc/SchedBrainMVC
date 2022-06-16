@@ -57,9 +57,8 @@
             this.lblContato.AutoSize = true;
             this.lblContato.Location = new System.Drawing.Point(110, 199);
             this.lblContato.Name = "lblContato";
-            this.lblContato.Size = new System.Drawing.Size(55, 15);
+            this.lblContato.Size = new System.Drawing.Size(0, 15);
             this.lblContato.TabIndex = 33;
-            this.lblContato.Text = "Contatos";
             // 
             // label10
             // 
@@ -205,26 +204,26 @@
             this.toolStripMenuIEditar,
             this.toolStripMenuExcluir});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(181, 92);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(120, 70);
             // 
             // toolStripMenuConcluir
             // 
             this.toolStripMenuConcluir.Name = "toolStripMenuConcluir";
-            this.toolStripMenuConcluir.Size = new System.Drawing.Size(180, 22);
+            this.toolStripMenuConcluir.Size = new System.Drawing.Size(119, 22);
             this.toolStripMenuConcluir.Text = "Concluir";
             this.toolStripMenuConcluir.Click += new System.EventHandler(this.toolStripMenuConcluir_Click);
             // 
             // toolStripMenuIEditar
             // 
             this.toolStripMenuIEditar.Name = "toolStripMenuIEditar";
-            this.toolStripMenuIEditar.Size = new System.Drawing.Size(180, 22);
+            this.toolStripMenuIEditar.Size = new System.Drawing.Size(119, 22);
             this.toolStripMenuIEditar.Text = "Editar";
             this.toolStripMenuIEditar.Click += new System.EventHandler(this.toolStripMenuIEditar_Click);
             // 
             // toolStripMenuExcluir
             // 
             this.toolStripMenuExcluir.Name = "toolStripMenuExcluir";
-            this.toolStripMenuExcluir.Size = new System.Drawing.Size(180, 22);
+            this.toolStripMenuExcluir.Size = new System.Drawing.Size(119, 22);
             this.toolStripMenuExcluir.Text = "Excluir";
             this.toolStripMenuExcluir.Click += new System.EventHandler(this.toolStripMenuExcluir_Click);
             // 

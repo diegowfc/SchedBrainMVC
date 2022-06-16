@@ -63,5 +63,10 @@ namespace SchedBrainMVC2.Controller
         {
             return Context.Contatos.Where(x => x.Apelido == apelido).FirstOrDefault();
         }
+
+        internal static int retornaIDContato(string nome)
+        {
+            return Context.Contatos.Where(x => x.Nome == nome).FirstOrDefault().ID;
+        }
     }
 }

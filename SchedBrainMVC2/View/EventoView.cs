@@ -25,10 +25,11 @@ namespace SchedBrainMVC2.View
             txtDescricao.ScrollBars = ScrollBars.Vertical;
             txtNome.Focus();
             preenchePainel();
+            preencheContatos();
         }
 
         bool imagemAlterada = false;
-        string eventoAlvo;
+        Evento eventoAlvo;
 
         /// <summary>
         /// Limpa os campos de entrada após a inserção de um novo evento.
@@ -47,6 +48,7 @@ namespace SchedBrainMVC2.View
             rdoConcluido.Checked = false;
             eventoAlvo = null;
             txtNome.Focus();
+            lstContatos.SelectedItems.Clear();
         }
 
         /// <summary>
@@ -55,6 +57,7 @@ namespace SchedBrainMVC2.View
         public void preenchePainel()
         {
             List<Evento> listaEventos = EventoController.ListaEvento();
+            List<EventoContato> listaIds = EventoContatoController.ListaContatosAtribuidos();
             flowLayoutPanel1.Controls.Clear();
 
             foreach (Evento evento in listaEventos)
@@ -62,6 +65,62 @@ namespace SchedBrainMVC2.View
                 EventoControlView ec = new EventoControlView(flowLayoutPanel1);
                 ec.SalvaEvento(evento);
                 flowLayoutPanel1.Controls.Add(ec);
+                foreach(EventoContato contatoID in listaIds)
+                {
+                    if(contatoID.EventoId == evento.ID)
+                        ec.SalvaContato(evento.ID, contatoID.ContatoId);
+                }
+            }
+        }
+
+        /// <summary>
+        /// Atribui contatos a um determinado evento e chama o controller para inserção na tabela
+        /// </summary>
+        /// <param name="eventoID"></param>
+        public void relacionaContatoEvento(int eventoID)
+        {
+            if (eventoAlvo == null)
+            {
+                foreach (string contatos in lstContatos.SelectedItems)
+                {
+                    EventoContato eventoContato = new EventoContato();
+                    eventoContato.EventoId = eventoID;
+                    eventoContato.ContatoId = ContatoController.retornaIDContato(contatos.ToString().Trim());
+                    EventoContatoController.InsereEventoContato(eventoContato);
+                }
+            }
+            else
+            {
+                List<EventoContato> listaNomes = EventoContatoController.ListaContatosAtribuidos();
+
+                foreach(EventoContato nomes in listaNomes)
+                {
+                    if(nomes.EventoId == eventoID)
+                        EventoContatoController.ExcluiEventoContato(nomes.ContatoId, eventoID);
+                }
+
+                if (lstContatos.Text != "")
+                {
+                    foreach (string contatos in lstContatos.SelectedItems)
+                    {
+                        EventoContato eventoContato = new EventoContato();
+                        eventoContato.EventoId = eventoID;
+                        eventoContato.ContatoId = ContatoController.retornaIDContato(contatos.ToString().Trim());
+                        EventoContatoController.InsereEventoContato(eventoContato);
+                    }
+                }
+            }
+        }
+
+        /// <summary>
+        /// Preenche o listbox com o nome dos contatos cadastrados no sistema
+        /// </summary>
+        public void preencheContatos()
+        {
+            foreach (Contato contato in ContatoController.ListaContatos())
+            {
+                if (contato != null)
+                    lstContatos.Items.Add(contato.Nome);
             }
         }
 
@@ -78,7 +137,7 @@ namespace SchedBrainMVC2.View
         /// <param name="foto"></param>
         public void editaCampo(string nomeEvento, string localEvento, string descricao, DateTime inicio, DateTime termino, string periodicidade, string status, string foto, string eventoEditado)
         {
-            eventoAlvo = eventoEditado;
+            eventoAlvo = EventoController.retornaEvento(eventoEditado);
             imagemAlterada = true;
             rdoCancelado.Visible = true;
             pcbAnexo.Tag = foto.ToString();
@@ -112,9 +171,8 @@ namespace SchedBrainMVC2.View
         {
             errorProvider1.Clear();
             bool erros = false;
-            string status, contatos = "";
+            string status;
             rdoCancelado.Visible = false;
-
 
             pcbAnexo.WaitOnLoad = imagemAlterada;
 
@@ -154,7 +212,6 @@ namespace SchedBrainMVC2.View
                 erros = true;
             }
 
-
             if (imagemAlterada == false)
             {
                 errorProvider1.SetError(pcbAnexo, "Escolha uma foto!");
@@ -170,27 +227,46 @@ namespace SchedBrainMVC2.View
 
             if (erros == false)
             {
-                if (eventoAlvo != null)
-                    EventoController.ExcluiEvento(eventoAlvo);
-
                 Evento evento = new Evento();
-                evento.NomeEvento = txtNome.Text.Trim();
-                evento.LocalEvento = txtLocal.Text.Trim();
-                evento.DescricaoEvento = txtDescricao.Text.Trim();
-                evento.DataInicio = dtpDataInicio.Value.Date;
-                evento.DataTermino = dtpDataTermino.Value.Date;
-                evento.Periodicidade = cboPeriodicidade.Text.Trim();
-                evento.Contato = lstContatos.Text.Trim();
-                evento.Status = status;
-                evento.Foto = pcbAnexo.Tag.ToString();
 
-                EventoController.InsereEvento(evento);
-                preenchePainel();
+                if (eventoAlvo == null)
+                {
+                    evento.NomeEvento = txtNome.Text.Trim();
+                    evento.LocalEvento = txtLocal.Text.Trim();
+                    evento.DescricaoEvento = txtDescricao.Text.Trim();
+                    evento.DataInicio = dtpDataInicio.Value.Date;
+                    evento.DataTermino = dtpDataTermino.Value.Date;
+                    evento.Periodicidade = cboPeriodicidade.Text.Trim();
+                    evento.Status = status;
+                    evento.Foto = pcbAnexo.Tag.ToString();
+                }
+                else
+                {
+                    eventoAlvo.NomeEvento = txtNome.Text.Trim();
+                    eventoAlvo.LocalEvento = txtLocal.Text.Trim();
+                    eventoAlvo.DescricaoEvento = txtDescricao.Text.Trim();
+                    eventoAlvo.DataInicio = dtpDataInicio.Value.Date;
+                    eventoAlvo.DataTermino = dtpDataTermino.Value.Date;
+                    eventoAlvo.Periodicidade = cboPeriodicidade.Text.Trim();
+                    eventoAlvo.Status = status;
+                    eventoAlvo.Foto = pcbAnexo.Tag.ToString();
+                }
+
+                if (eventoAlvo == null)
+                {
+                    EventoController.InsereEvento(evento);
+                    if(lstContatos.Text.Trim() != string.Empty)
+                        relacionaContatoEvento(evento.ID);
+                }
+                else
+                {
+                    EventoController.EditaEvento(eventoAlvo);
+                    relacionaContatoEvento(eventoAlvo.ID);
+                }
 
                 DialogResult dr = MessageBox.Show("Evento salvo com sucesso!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                if (dr == DialogResult.OK)
-                    limpaCampo();
+                limpaCampo();
+                preenchePainel();
             }
         }
 

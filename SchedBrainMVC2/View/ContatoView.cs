@@ -159,15 +159,6 @@ namespace SchedBrainMVC2.View
                 erros = true;
             }
 
-            if (ContatoController.ListaContatos().Count > 0)
-            {
-                if (txtApelido.Text == ContatoController.retornaContato(txtApelido.Text).Apelido)
-                {
-                    errorProviderContato.SetError(txtApelido, "Este apelido já existe no sistema!");
-                    erros = true;
-                }
-            }
-
             if (chkFavorito.Checked == true)
                 favorito = true;
             else

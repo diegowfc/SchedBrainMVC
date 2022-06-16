@@ -29,12 +29,18 @@ namespace SchedBrainMVC2.View
         public void AtualizaPainel()
         {
             List<Evento> listaEventos = EventoController.ListaEvento();
+            List<EventoContato> listaIds = EventoContatoController.ListaContatosAtribuidos();
 
             foreach (Evento evento in listaEventos)
             {
                 EventoControlView ec = new EventoControlView(painel as FlowLayoutPanel);
                 ec.SalvaEvento(evento);
                 painel.Controls.Add(ec);
+                foreach (EventoContato contatoID in listaIds)
+                {
+                    if (contatoID.EventoId == evento.ID)
+                        ec.SalvaContato(evento.ID, contatoID.ContatoId);
+                }
             }
         }
 
@@ -79,7 +85,7 @@ namespace SchedBrainMVC2.View
             set { lblStatus.Text = value; }
         }
 
-        public string Contatos
+        public string? Contatos
         {
             get { return lblContato.Text.Trim(); }
             set { lblContato.Text = value; }
@@ -101,7 +107,6 @@ namespace SchedBrainMVC2.View
             PeriodicidadeEvento = e.Periodicidade;
             StatusEvento = e.Status;
             lnkFoto.Tag = e.Foto;
-            Contatos = e.Contato;
 
             if (e.Status == "Concluido")
                 lblNome.ForeColor = Color.Green;
@@ -109,6 +114,16 @@ namespace SchedBrainMVC2.View
                 lblNome.ForeColor = Color.Blue;
             else
                 lblNome.ForeColor = Color.Red;
+        }
+
+        public void SalvaContato(int idEvento, int idContato)
+        {
+            List<EventoContato> lista = EventoContatoController.retornaNomeContato(idEvento, idContato);
+
+            foreach (EventoContato nomeContato in lista)
+            {
+                Contatos += nomeContato.NomeContato.ToString() + "; ";
+            }
         }
 
         private void lnkFoto_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)

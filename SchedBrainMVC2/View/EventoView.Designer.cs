@@ -30,7 +30,6 @@
         {
             this.components = new System.ComponentModel.Container();
             this.rdoCancelado = new System.Windows.Forms.RadioButton();
-            this.lstContatos = new System.Windows.Forms.ListBox();
             this.txtPesquisar = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.txtDescricao = new System.Windows.Forms.TextBox();
@@ -48,6 +47,7 @@
             this.txtNome = new System.Windows.Forms.TextBox();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.btnLimpar = new System.Windows.Forms.Button();
+            this.lstContatos = new System.Windows.Forms.ListBox();
             ((System.ComponentModel.ISupportInitialize)(this.pcbAnexo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
@@ -63,16 +63,6 @@
             this.rdoCancelado.Text = "Cancelado";
             this.rdoCancelado.UseVisualStyleBackColor = true;
             this.rdoCancelado.Visible = false;
-            // 
-            // lstContatos
-            // 
-            this.lstContatos.FormattingEnabled = true;
-            this.lstContatos.ItemHeight = 15;
-            this.lstContatos.Location = new System.Drawing.Point(10, 358);
-            this.lstContatos.Name = "lstContatos";
-            this.lstContatos.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple;
-            this.lstContatos.Size = new System.Drawing.Size(279, 109);
-            this.lstContatos.TabIndex = 6;
             // 
             // txtPesquisar
             // 
@@ -237,14 +227,24 @@
             this.btnLimpar.UseVisualStyleBackColor = true;
             this.btnLimpar.Click += new System.EventHandler(this.btnLimpar_Click);
             // 
+            // lstContatos
+            // 
+            this.lstContatos.FormattingEnabled = true;
+            this.lstContatos.ItemHeight = 15;
+            this.lstContatos.Location = new System.Drawing.Point(12, 358);
+            this.lstContatos.Name = "lstContatos";
+            this.lstContatos.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple;
+            this.lstContatos.Size = new System.Drawing.Size(279, 109);
+            this.lstContatos.TabIndex = 56;
+            // 
             // EventoView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1035, 534);
+            this.Controls.Add(this.lstContatos);
             this.Controls.Add(this.btnLimpar);
             this.Controls.Add(this.rdoCancelado);
-            this.Controls.Add(this.lstContatos);
             this.Controls.Add(this.txtPesquisar);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.txtDescricao);

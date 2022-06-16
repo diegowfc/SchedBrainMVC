@@ -28,6 +28,7 @@ namespace SchedBrainMVC2.View
         private void PrincipalView_Activated(object sender, EventArgs e)
         {
             List<Evento> listaEventos = EventoController.retornaEventoAtual();
+            List<EventoContato> listaIds = EventoContatoController.ListaContatosAtribuidos();
             List<Contato> listaContatos = ContatoController.retornaFavoritos();
 
             flpEventoPrincipal.Controls.Clear();
@@ -38,6 +39,11 @@ namespace SchedBrainMVC2.View
                 EventoControlView ec = new EventoControlView(flpEventoPrincipal);
                 ec.SalvaEvento(evento);
                 flpEventoPrincipal.Controls.Add(ec);
+                foreach (EventoContato contatoID in listaIds)
+                {
+                    if (contatoID.EventoId == evento.ID)
+                        ec.SalvaContato(evento.ID, contatoID.ContatoId);
+                }
                 ec.ContextMenuStrip = null;
             }
 

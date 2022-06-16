@@ -26,8 +26,6 @@ namespace SchedBrainMVC2.Model
 
         public string Periodicidade { get; set; }
 
-        public string? Contato { get; set; }
-
         public string Status { get; set; }
 
         public string Foto { get; set; }
