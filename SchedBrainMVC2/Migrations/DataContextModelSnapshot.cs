@@ -134,6 +134,59 @@ namespace SchedBrainMVC2.Migrations
                     b.ToTable("EventoContato");
                 });
 
+            modelBuilder.Entity("SchedBrainMVC2.Model.Tarefa", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"), 1L, 1);
+
+                    b.Property<string>("Anexos")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("ContatoId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("DataCriacao")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("DataMaximaConclusao")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Descricao")
+                        .HasMaxLength(2130)
+                        .HasColumnType("nvarchar(2130)");
+
+                    b.Property<int?>("EventoId")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("Lembrete")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Prioridade")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Situacao")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Titulo")
+                        .IsRequired()
+                        .HasMaxLength(26)
+                        .HasColumnType("nvarchar(26)");
+
+                    b.HasKey("ID");
+
+                    b.HasIndex("ContatoId");
+
+                    b.HasIndex("EventoId");
+
+                    b.ToTable("Tarefas");
+                });
+
             modelBuilder.Entity("SchedBrainMVC2.Model.EventoContato", b =>
                 {
                     b.HasOne("SchedBrainMVC2.Model.Contato", "Contato")
@@ -147,6 +200,21 @@ namespace SchedBrainMVC2.Migrations
                         .HasForeignKey("EventoId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("Contato");
+
+                    b.Navigation("Evento");
+                });
+
+            modelBuilder.Entity("SchedBrainMVC2.Model.Tarefa", b =>
+                {
+                    b.HasOne("SchedBrainMVC2.Model.Contato", "Contato")
+                        .WithMany()
+                        .HasForeignKey("ContatoId");
+
+                    b.HasOne("SchedBrainMVC2.Model.Evento", "Evento")
+                        .WithMany()
+                        .HasForeignKey("EventoId");
 
                     b.Navigation("Contato");
 

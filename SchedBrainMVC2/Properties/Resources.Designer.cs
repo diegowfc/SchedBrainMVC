@@ -63,6 +63,16 @@ namespace SchedBrainMVC2.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap AnexoTarefa {
+            get {
+                object obj = ResourceManager.GetObject("AnexoTarefa", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Foto {
             get {
                 object obj = ResourceManager.GetObject("Foto", resourceCulture);

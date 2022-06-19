@@ -29,91 +29,125 @@
         private void InitializeComponent()
         {
             this.label1 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.AcessaContato = new System.Windows.Forms.Button();
+            this.AcessaEvento = new System.Windows.Forms.Button();
+            this.AcessaTarefa = new System.Windows.Forms.Button();
             this.flpContatoPrincipal = new System.Windows.Forms.FlowLayoutPanel();
             this.flpEventoPrincipal = new System.Windows.Forms.FlowLayoutPanel();
             this.flpTarefaPrincipal = new System.Windows.Forms.FlowLayoutPanel();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(353, 9);
+            this.label1.Location = new System.Drawing.Point(443, 9);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(326, 37);
             this.label1.TabIndex = 0;
             this.label1.Text = "Bem vindo ao SchedBrain!";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // button1
+            // AcessaContato
             // 
-            this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button1.Location = new System.Drawing.Point(191, 100);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(120, 23);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "Acessar contatos";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.AcessaContato.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.AcessaContato.Location = new System.Drawing.Point(191, 100);
+            this.AcessaContato.Name = "AcessaContato";
+            this.AcessaContato.Size = new System.Drawing.Size(120, 23);
+            this.AcessaContato.TabIndex = 1;
+            this.AcessaContato.Text = "Acessar contatos";
+            this.AcessaContato.UseVisualStyleBackColor = true;
+            this.AcessaContato.Click += new System.EventHandler(this.AcessaContato_Click);
             // 
-            // button2
+            // AcessaEvento
             // 
-            this.button2.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button2.Location = new System.Drawing.Point(607, 100);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(100, 23);
-            this.button2.TabIndex = 2;
-            this.button2.Text = "Acessar eventos";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.AcessaEvento.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.AcessaEvento.Location = new System.Drawing.Point(607, 100);
+            this.AcessaEvento.Name = "AcessaEvento";
+            this.AcessaEvento.Size = new System.Drawing.Size(100, 23);
+            this.AcessaEvento.TabIndex = 2;
+            this.AcessaEvento.Text = "Acessar eventos";
+            this.AcessaEvento.UseVisualStyleBackColor = true;
+            this.AcessaEvento.Click += new System.EventHandler(this.AcessaEvento_Click);
             // 
-            // button3
+            // AcessaTarefa
             // 
-            this.button3.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button3.Location = new System.Drawing.Point(922, 100);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(100, 23);
-            this.button3.TabIndex = 3;
-            this.button3.Text = "Acessar tarefas";
-            this.button3.UseVisualStyleBackColor = true;
+            this.AcessaTarefa.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.AcessaTarefa.Location = new System.Drawing.Point(922, 100);
+            this.AcessaTarefa.Name = "AcessaTarefa";
+            this.AcessaTarefa.Size = new System.Drawing.Size(100, 23);
+            this.AcessaTarefa.TabIndex = 3;
+            this.AcessaTarefa.Text = "Acessar tarefas";
+            this.AcessaTarefa.UseVisualStyleBackColor = true;
+            this.AcessaTarefa.Click += new System.EventHandler(this.AcessaTarefa_Click);
             // 
             // flpContatoPrincipal
             // 
             this.flpContatoPrincipal.AutoScroll = true;
-            this.flpContatoPrincipal.Location = new System.Drawing.Point(12, 129);
+            this.flpContatoPrincipal.Location = new System.Drawing.Point(12, 175);
             this.flpContatoPrincipal.Name = "flpContatoPrincipal";
-            this.flpContatoPrincipal.Size = new System.Drawing.Size(472, 280);
+            this.flpContatoPrincipal.Size = new System.Drawing.Size(472, 221);
             this.flpContatoPrincipal.TabIndex = 5;
             // 
             // flpEventoPrincipal
             // 
             this.flpEventoPrincipal.AutoScroll = true;
-            this.flpEventoPrincipal.Location = new System.Drawing.Point(510, 129);
+            this.flpEventoPrincipal.Location = new System.Drawing.Point(502, 175);
             this.flpEventoPrincipal.Name = "flpEventoPrincipal";
-            this.flpEventoPrincipal.Size = new System.Drawing.Size(290, 280);
+            this.flpEventoPrincipal.Size = new System.Drawing.Size(290, 221);
             this.flpEventoPrincipal.TabIndex = 6;
             // 
             // flpTarefaPrincipal
             // 
-            this.flpTarefaPrincipal.Location = new System.Drawing.Point(812, 129);
+            this.flpTarefaPrincipal.Location = new System.Drawing.Point(818, 175);
             this.flpTarefaPrincipal.Name = "flpTarefaPrincipal";
-            this.flpTarefaPrincipal.Size = new System.Drawing.Size(292, 280);
+            this.flpTarefaPrincipal.Size = new System.Drawing.Size(303, 221);
             this.flpTarefaPrincipal.TabIndex = 7;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(191, 157);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(104, 15);
+            this.label2.TabIndex = 8;
+            this.label2.Text = "Contatos favoritos";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(607, 157);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(101, 15);
+            this.label3.TabIndex = 9;
+            this.label3.Text = "Próximos eventos";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(922, 157);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(92, 15);
+            this.label4.TabIndex = 10;
+            this.label4.Text = "Tarefas urgentes";
             // 
             // PrincipalView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1110, 467);
+            this.ClientSize = new System.Drawing.Size(1133, 467);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.flpTarefaPrincipal);
             this.Controls.Add(this.flpEventoPrincipal);
             this.Controls.Add(this.flpContatoPrincipal);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.AcessaTarefa);
+            this.Controls.Add(this.AcessaEvento);
+            this.Controls.Add(this.AcessaContato);
             this.Controls.Add(this.label1);
             this.Name = "PrincipalView";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -127,11 +161,14 @@
         #endregion
 
         private Label label1;
-        private Button button1;
-        private Button button2;
-        private Button button3;
+        private Button AcessaContato;
+        private Button AcessaEvento;
+        private Button AcessaTarefa;
         private FlowLayoutPanel flpContatoPrincipal;
         private FlowLayoutPanel flpEventoPrincipal;
         private FlowLayoutPanel flpTarefaPrincipal;
+        private Label label2;
+        private Label label3;
+        private Label label4;
     }
 }

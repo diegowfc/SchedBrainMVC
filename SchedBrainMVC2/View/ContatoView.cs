@@ -113,7 +113,7 @@ namespace SchedBrainMVC2.View
         private void btnCadastrar_Click(object sender, EventArgs e)
         {
             errorProviderContato.Clear();
-            bool erros = false, favorito = false;
+            bool erros = false, favorito = false, sucesso = false;
             string tipo = "";
             DateTime dataLimite = new DateTime(1910, 12, 31);
 
@@ -200,23 +200,33 @@ namespace SchedBrainMVC2.View
                         contatoAlvo.Imagem = pcbAnexo.Tag.ToString();
                 }
 
-                if (contatoAlvo == null)
-                    ContatoController.InsereContato(contato);
-                else
-                    ContatoController.EditaContato(contatoAlvo);
+                try
+                {
+                    if (contatoAlvo == null)
+                        ContatoController.InsereContato(contato);
+                    else
+                        ContatoController.EditaContato(contatoAlvo);
 
-                preenchePainel();
-                DialogResult dr = MessageBox.Show("Contato salvo com sucesso!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                contatoEditado = false;
-                resetaFormulario();
-                contatoAlvo = null;
+                    sucesso = true;
+                }
+                catch {}
+
+                if (sucesso)
+                {
+                    preenchePainel();
+                    DialogResult dr = MessageBox.Show("Contato salvo com sucesso!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    contatoEditado = false;
+                    resetaFormulario();
+                    contatoAlvo = null;
+                }
+                else MessageBox.Show("Falha na inserção","SchedBrain", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
         private void pcbAnexo_Click(object sender, EventArgs e)
         {
             OpenFileDialog open = new OpenFileDialog();
-            open.Filter = "Image Files(*.jpg; *.jpeg; *.png; *.BMP;)|*.jpg; *.jpeg; *.png; *.BMP;";
+            open.Filter = "Arquivo(*.jpg; *.jpeg; *.png; *.BMP;)|*.jpg; *.jpeg; *.png; *.BMP;";
             if (open.ShowDialog() == DialogResult.OK)
             {
                 try

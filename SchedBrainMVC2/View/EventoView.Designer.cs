@@ -263,7 +263,7 @@
             this.MaximizeBox = false;
             this.Name = "EventoView";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Cadastro de evento";
+            this.Text = "Cadastro de eventos";
             this.Load += new System.EventHandler(this.EventoView_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pcbAnexo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();

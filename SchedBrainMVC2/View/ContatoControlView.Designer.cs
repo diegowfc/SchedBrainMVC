@@ -45,7 +45,7 @@
             this.pcbFoto.Image = global::SchedBrainMVC2.Properties.Resources.icone;
             this.pcbFoto.Location = new System.Drawing.Point(3, 58);
             this.pcbFoto.Name = "pcbFoto";
-            this.pcbFoto.Size = new System.Drawing.Size(161, 121);
+            this.pcbFoto.Size = new System.Drawing.Size(161, 148);
             this.pcbFoto.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pcbFoto.TabIndex = 0;
             this.pcbFoto.TabStop = false;
@@ -116,13 +116,13 @@
             // 
             // txtFavorito
             // 
-            this.txtFavorito.BackColor = System.Drawing.SystemColors.Info;
+            this.txtFavorito.BackColor = System.Drawing.SystemColors.InactiveCaption;
             this.txtFavorito.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.txtFavorito.Location = new System.Drawing.Point(3, 3);
             this.txtFavorito.Multiline = true;
             this.txtFavorito.Name = "txtFavorito";
             this.txtFavorito.ReadOnly = true;
-            this.txtFavorito.Size = new System.Drawing.Size(52, 38);
+            this.txtFavorito.Size = new System.Drawing.Size(54, 49);
             this.txtFavorito.TabIndex = 8;
             this.txtFavorito.Text = "👥";
             this.txtFavorito.Visible = false;
@@ -142,7 +142,7 @@
             this.Controls.Add(this.lblNome);
             this.Controls.Add(this.pcbFoto);
             this.Name = "ContatoControlView";
-            this.Size = new System.Drawing.Size(449, 184);
+            this.Size = new System.Drawing.Size(449, 209);
             ((System.ComponentModel.ISupportInitialize)(this.pcbFoto)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

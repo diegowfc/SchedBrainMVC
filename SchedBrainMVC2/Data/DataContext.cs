@@ -17,6 +17,7 @@ namespace SchedBrainMVC2.Data
 
         public DbSet<Evento> Eventos { get; set; }
         public DbSet<Contato> Contatos { get; set; }
+        public DbSet<Tarefa> Tarefas { get; set; }
         public DbSet<EventoContato> EventoContato { get; set; }
     }
 }

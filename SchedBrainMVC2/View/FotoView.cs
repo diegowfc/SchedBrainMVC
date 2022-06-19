@@ -21,7 +21,7 @@ namespace SchedBrainMVC2.View
             }
             catch (Exception)
             {
-                MessageBox.Show("Foto não encontrada!", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Foto não encontrada!", "SchedBrain", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Close();
             }
         }

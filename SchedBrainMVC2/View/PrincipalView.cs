@@ -19,7 +19,7 @@ namespace SchedBrainMVC2.View
             InitializeComponent();
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void AcessaEvento_Click(object sender, EventArgs e)
         {
             EventoView ev = new EventoView();
             ev.ShowDialog();
@@ -30,9 +30,11 @@ namespace SchedBrainMVC2.View
             List<Evento> listaEventos = EventoController.retornaEventoAtual();
             List<EventoContato> listaIds = EventoContatoController.ListaContatosAtribuidos();
             List<Contato> listaContatos = ContatoController.retornaFavoritos();
+            List<Tarefa> listaTarefas = TarefaController.retornaTarefaPrioritaria();
 
             flpEventoPrincipal.Controls.Clear();
             flpContatoPrincipal.Controls.Clear();
+            flpTarefaPrincipal.Controls.Clear();
 
             foreach (Evento evento in listaEventos)
             {
@@ -53,12 +55,25 @@ namespace SchedBrainMVC2.View
                 cc.SalvaContato(contato);
                 flpContatoPrincipal.Controls.Add(cc);
             }
+
+            foreach (Tarefa tarefa in listaTarefas)
+            {
+                TarefaControlView tc = new TarefaControlView(flpTarefaPrincipal);
+                tc.SalvaTarefa(tarefa);
+                flpTarefaPrincipal.Controls.Add(tc);
+            }
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void AcessaContato_Click(object sender, EventArgs e)
         {
             ContatoView contato = new ContatoView();
             contato.ShowDialog();
+        }
+
+        private void AcessaTarefa_Click(object sender, EventArgs e)
+        {
+            TarefaView tarefa = new TarefaView();
+            tarefa.ShowDialog();
         }
     }
 }

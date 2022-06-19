@@ -14,6 +14,10 @@ namespace SchedBrainMVC2.View
 {
     public partial class EventoView : Form
     {
+
+        bool imagemAlterada = false;
+        Evento eventoAlvo;
+
         public EventoView()
         {
             InitializeComponent();
@@ -27,9 +31,6 @@ namespace SchedBrainMVC2.View
             preenchePainel();
             preencheContatos();
         }
-
-        bool imagemAlterada = false;
-        Evento eventoAlvo;
 
         /// <summary>
         /// Limpa os campos de entrada após a inserção de um novo evento.
@@ -170,7 +171,7 @@ namespace SchedBrainMVC2.View
         private void btnCadastrar_Click(object sender, EventArgs e)
         {
             errorProvider1.Clear();
-            bool erros = false;
+            bool erros = false, sucesso = false;
             string status;
             rdoCancelado.Visible = false;
 
@@ -252,28 +253,39 @@ namespace SchedBrainMVC2.View
                     eventoAlvo.Foto = pcbAnexo.Tag.ToString();
                 }
 
-                if (eventoAlvo == null)
+                try
                 {
-                    EventoController.InsereEvento(evento);
-                    if(lstContatos.Text.Trim() != string.Empty)
-                        relacionaContatoEvento(evento.ID);
-                }
-                else
-                {
-                    EventoController.EditaEvento(eventoAlvo);
-                    relacionaContatoEvento(eventoAlvo.ID);
-                }
+                    if (eventoAlvo == null)
+                    {
+                        EventoController.InsereEvento(evento);
+                        if (lstContatos.Text.Trim() != string.Empty)
+                            relacionaContatoEvento(evento.ID);
+                    }
+                    else
+                    {
+                        EventoController.EditaEvento(eventoAlvo);
+                        relacionaContatoEvento(eventoAlvo.ID);
+                    }
 
-                DialogResult dr = MessageBox.Show("Evento salvo com sucesso!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                limpaCampo();
-                preenchePainel();
+                    sucesso = true;
+                }
+                catch {}
+
+                if (sucesso) 
+                {
+                    MessageBox.Show("Evento salvo com sucesso!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    limpaCampo();
+                    preenchePainel();
+                }
+                else MessageBox.Show("Falha na inserção", "SchedBrain", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
             }
         }
 
         private void pcbAnexo_Click(object sender, EventArgs e)
         {
             OpenFileDialog open = new OpenFileDialog();
-            open.Filter = "Image Files(*.jpg; *.jpeg; *.png; *.BMP;)|*.jpg; *.jpeg; *.png; *.BMP;";
+            open.Filter = "Arquivo(*.jpg; *.jpeg; *.png; *.BMP;)|*.jpg; *.jpeg; *.png; *.BMP;";
             if (open.ShowDialog() == DialogResult.OK)
             {
                 try

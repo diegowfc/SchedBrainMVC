@@ -75,6 +75,14 @@ namespace SchedBrainMVC2.Controller
                 .ToList();
         }
 
+        internal static string retornaNomeEvento(int? eventoId)
+        {
+            if (eventoId != null)
+                return Context.Eventos.Where(x => x.ID == eventoId).FirstOrDefault().NomeEvento;
+
+            return "";
+        }
+
         internal static List<Evento> ListaEvento()
         {
             return Context.Eventos.OrderBy(x => x.DataInicio).ThenBy(x => x.DataTermino).ToList();
