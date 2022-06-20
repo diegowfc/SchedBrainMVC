@@ -50,6 +50,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.cboEventos = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
+            this.btnLimpar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pcbAnexo)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
@@ -172,11 +173,11 @@
             // 
             // btnCadastrar
             // 
-            this.btnCadastrar.Location = new System.Drawing.Point(6, 567);
+            this.btnCadastrar.Location = new System.Drawing.Point(93, 562);
             this.btnCadastrar.Name = "btnCadastrar";
             this.btnCadastrar.Size = new System.Drawing.Size(75, 23);
             this.btnCadastrar.TabIndex = 6;
-            this.btnCadastrar.Text = "Cadastrar";
+            this.btnCadastrar.Text = "Salvar";
             this.btnCadastrar.UseVisualStyleBackColor = true;
             this.btnCadastrar.Click += new System.EventHandler(this.btnCadastrar_Click);
             // 
@@ -263,11 +264,22 @@
             this.label2.TabIndex = 11;
             this.label2.Text = "Eventos";
             // 
+            // btnLimpar
+            // 
+            this.btnLimpar.Location = new System.Drawing.Point(6, 562);
+            this.btnLimpar.Name = "btnLimpar";
+            this.btnLimpar.Size = new System.Drawing.Size(75, 23);
+            this.btnLimpar.TabIndex = 13;
+            this.btnLimpar.Text = "Limpar";
+            this.btnLimpar.UseVisualStyleBackColor = true;
+            this.btnLimpar.Click += new System.EventHandler(this.btnLimpar_Click);
+            // 
             // TarefaView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(819, 609);
+            this.Controls.Add(this.btnLimpar);
             this.Controls.Add(this.cboEventos);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.cboContatos);
@@ -320,5 +332,6 @@
         private Label label2;
         private ComboBox cboContatos;
         private Label label1;
+        private Button btnLimpar;
     }
 }

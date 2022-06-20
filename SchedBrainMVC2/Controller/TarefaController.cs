@@ -31,6 +31,14 @@ namespace SchedBrainMVC2.Controller
             Context.SaveChanges();
         }
 
+        internal static void EditaTarefa(Tarefa tarefa)
+        {
+            Validacao(tarefa);
+
+            Context.Tarefas.Update(tarefa);
+            Context.SaveChanges();
+        }
+
         internal static void ConcluiTarefa(string nome)
         {
             Tarefa tarefaAlvo = Context.Tarefas.FirstOrDefault(x => x.Titulo == nome)!;
@@ -47,6 +55,16 @@ namespace SchedBrainMVC2.Controller
         internal static List<Tarefa> ListaTarefa()
         {
             return Context.Tarefas.OrderBy(x => x.DataMaximaConclusao).ToList();
+        }
+
+        /// <summary>
+        /// Retorna a tarefa escolhida para edição.
+        /// </summary>
+        /// <param name="tituloTarefa"></param>
+        /// <returns></returns>
+        internal static Tarefa retornaTarefa(string tituloTarefa)
+        {
+            return Context.Tarefas.Where(x => x.Titulo == tituloTarefa).FirstOrDefault();
         }
     }
 }

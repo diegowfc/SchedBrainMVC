@@ -57,10 +57,10 @@ namespace SchedBrainMVC2.View
             set { lblTarefaSituacao.Text = value; }
         }
 
-        public string Horario
+        public DateTime Horario
         {
-            get { return lblHorario.Text.Trim(); }
-            set { lblHorario.Text = value; }
+            get { return Convert.ToDateTime(lblHorario.Text); }
+            set { lblHorario.Text = value.ToShortDateString(); }
         }
 
         public string Contato
@@ -87,8 +87,8 @@ namespace SchedBrainMVC2.View
             Descricao = t.Descricao;
             Prioridade = t.Prioridade;
             Situacao = t.Situacao;
-            Horario = t.DataMaximaConclusao.ToString();
-            Contato = ContatoController.retornaNomeContato(t.ContatoId);
+            Horario = t.DataMaximaConclusao.Value;
+            Contato = ContatoController.retornaApelidoContato(t.ContatoId);
             Evento = EventoController.retornaNomeEvento(t.EventoId);
             Anexo = t.Anexos;
 
@@ -105,7 +105,10 @@ namespace SchedBrainMVC2.View
 
         private void editarToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            //TODO
+            TarefaView f1 = (TarefaView)FindForm();
+
+            string tarefaEditada = Titulo;
+            f1.editaCampo(Titulo, Descricao, Horario, Prioridade, Anexo, tarefaEditada);
         }
 
         private void concluirToolStripMenuItem_Click(object sender, EventArgs e)

@@ -16,6 +16,7 @@ namespace SchedBrainMVC2.View
     {
         List<Tarefa> listaTarefas = new List<Tarefa>();
         bool imagemAlterada = false;
+        Tarefa tarefaAlvo;
 
         public TarefaView()
         {
@@ -52,6 +53,19 @@ namespace SchedBrainMVC2.View
                 cboEventos.Items.Add(evento.NomeEvento);
         }
 
+        public void preenchePainel()
+        {
+            List<Tarefa> listaTarefas = TarefaController.ListaTarefa();
+            flpanel.Controls.Clear();
+
+            foreach (Tarefa tarefa in listaTarefas)
+            {
+                TarefaControlView tf = new TarefaControlView(flpanel);
+                tf.SalvaTarefa(tarefa);
+                flpanel.Controls.Add(tf);
+            }
+        }
+
         public void limpaTarefa()
         {
             imagemAlterada = false;
@@ -64,6 +78,37 @@ namespace SchedBrainMVC2.View
             cboPrioridade.SelectedIndex = 0;
             cboContatos.SelectedIndex = 0;
             cboEventos.SelectedIndex = 0;
+        }
+
+        public void editaCampo(string titulo, string descricao, DateTime datamaximaconclusao, string prioridade, string anexo, string tarefaEditada)
+        {
+            tarefaAlvo = TarefaController.retornaTarefa(tarefaEditada);
+            rdLembreteNao.Visible = true;
+            rdLembreteSim.Visible = true;
+            imagemAlterada = true;
+            pcbAnexo.Tag = anexo.ToString();
+
+            try
+            {
+                if (anexo != "")
+                    pcbAnexo.Image = new Bitmap(anexo);
+            }
+            catch (Exception)
+            {
+                pcbAnexo.Image = Properties.Resources.AnexoTarefa;
+                pcbAnexo.Image.Tag = "";
+            }
+
+            txtTarefaTitulo.Text = titulo;
+            txtTarefaDesc.Text = descricao;
+            dtpTarefaDate.Value = datamaximaconclusao;
+            cboPrioridade.Text = prioridade.ToString();
+
+            if(tarefaAlvo.ContatoId != null)
+                cboContatos.SelectedItem = ContatoController.retornaApelidoContato(tarefaAlvo.ContatoId);
+            if (tarefaAlvo.EventoId != null)
+                cboEventos.SelectedItem = EventoController.retornaNomeEvento(tarefaAlvo.EventoId);
+
         }
 
 
@@ -106,53 +151,65 @@ namespace SchedBrainMVC2.View
             if (erros == false)
             {
                 Tarefa t = new Tarefa();
-                t.Titulo = txtTarefaTitulo.Text;
-                t.Descricao = txtTarefaDesc.Text;
-                t.Prioridade = cboPrioridade.Text;
-                t.Anexos = pcbAnexo.Tag.ToString();
-                t.Situacao = "Pendente";
-                t.DataMaximaConclusao = new DateTime(dtpTarefaDate.Value.Year,
-                    dtpTarefaDate.Value.Month, dtpTarefaDate.Value.Day,
-                    dtpTarefaDate.Value.Hour, dtpTarefaDate.Value.Minute, 0);
-                t.DataCriacao = DateTime.Now;
 
-                if(cboContatos.SelectedIndex != 0)
+                if (tarefaAlvo == null)
                 {
-                    t.ContatoId = ContatoController.retornaContato(cboContatos.SelectedItem.ToString()).ID;
-                }
+                    t.Titulo = txtTarefaTitulo.Text;
+                    t.Descricao = txtTarefaDesc.Text;
+                    t.Prioridade = cboPrioridade.Text;
+                    t.Anexos = pcbAnexo.Tag.ToString();
+                    t.Situacao = "Pendente";
+                    t.DataMaximaConclusao = new DateTime(dtpTarefaDate.Value.Year,
+                        dtpTarefaDate.Value.Month, dtpTarefaDate.Value.Day,
+                        dtpTarefaDate.Value.Hour, dtpTarefaDate.Value.Minute, 0);
+                    t.DataCriacao = DateTime.Now;
 
-                if (cboEventos.SelectedIndex != 0)
+                    if (cboContatos.SelectedIndex != 0) t.ContatoId = ContatoController.retornaContato(cboContatos.SelectedItem.ToString()).ID;
+                    if (cboEventos.SelectedIndex != 0) t.EventoId = EventoController.retornaEvento(cboEventos.SelectedItem.ToString()).ID;
+                    if (rdLembreteSim.Checked) t.Lembrete = true;
+                    else if (rdLembreteNao.Checked) t.Lembrete = false;
+                    timer1.Start();
+                } 
+                else
                 {
-                    t.EventoId = EventoController.retornaEvento(cboEventos.SelectedItem.ToString()).ID;
-                }
+                    tarefaAlvo.Titulo = txtTarefaTitulo.Text.Trim();
+                    tarefaAlvo.Descricao = txtTarefaDesc.Text.Trim();
+                    tarefaAlvo.Prioridade = cboPrioridade.Text.Trim();
+                    tarefaAlvo.Anexos = pcbAnexo.Tag.ToString();
+                    tarefaAlvo.DataMaximaConclusao = new DateTime(dtpTarefaDate.Value.Year,
+                        dtpTarefaDate.Value.Month, dtpTarefaDate.Value.Day,
+                        dtpTarefaDate.Value.Hour, dtpTarefaDate.Value.Minute, 0);
+                    tarefaAlvo.DataCriacao = DateTime.Now;
 
-                if (rdLembreteSim.Checked)
-                {
-                    t.Lembrete = true;
-                }
-                else if (rdLembreteNao.Checked)
-                {
-                    t.Lembrete = false;
-                }
-                timer1.Start();
+                    if (cboContatos.SelectedIndex != 0) tarefaAlvo.ContatoId = ContatoController.retornaContato(cboContatos.SelectedItem.ToString()).ID;
+                    if (cboEventos.SelectedIndex != 0) tarefaAlvo.EventoId = EventoController.retornaEvento(cboEventos.SelectedItem.ToString()).ID;
+                    if (rdLembreteSim.Checked) tarefaAlvo.Lembrete = true;
+                    if (rdLembreteSim.Checked) tarefaAlvo.Lembrete = true;
+                    else if (rdLembreteNao.Checked) tarefaAlvo.Lembrete = false;
 
-                TarefaControlView tf = new TarefaControlView(flpanel);
-                tf.SalvaTarefa(t);
-                flpanel.Controls.Add(tf);
-
+                    timer1.Start();
+                }
                 try
                 {
-                    TarefaController.InsereTarefa(t);
+                    if (tarefaAlvo == null)
+                    {
+                        TarefaController.InsereTarefa(t);
+                        listaTarefas.Add(t);
+                    }
+                    else
+                    {
+                        TarefaController.EditaTarefa(tarefaAlvo);
+                        listaTarefas.Add(tarefaAlvo);
+                    }
                     sucesso = true;
                 }
-                catch { }
+                catch {}
 
                 if (sucesso)
                 {
-                    listaTarefas.Add(t);
-
                     MessageBox.Show("Tarefa salva com sucesso!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     limpaTarefa();
+                    preenchePainel();
                 }
                 else MessageBox.Show("Falha na inserção", "SchedBrain", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -221,6 +278,18 @@ namespace SchedBrainMVC2.View
                     }
                 }
             }
+        }
+
+        private void btnLimpar_Click(object sender, EventArgs e)
+        {
+            DialogResult dr = MessageBox.Show(
+                "Deseja limpar todos os campos?", "SchedBrain",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question,
+                MessageBoxDefaultButton.Button2);
+
+            if (dr == DialogResult.Yes)
+                limpaTarefa();
         }
     }
 }
