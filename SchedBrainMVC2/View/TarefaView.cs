@@ -29,6 +29,7 @@ namespace SchedBrainMVC2.View
             cboPrioridade.SelectedIndex = 0;
             cboContatos.SelectedIndex = 0;
             cboEventos.SelectedIndex = 0;
+            txtTarefaTitulo.Focus();
             preencheContatoEvento();
         }
 
@@ -78,6 +79,7 @@ namespace SchedBrainMVC2.View
             cboPrioridade.SelectedIndex = 0;
             cboContatos.SelectedIndex = 0;
             cboEventos.SelectedIndex = 0;
+            txtTarefaTitulo.Focus();
         }
 
         public void editaCampo(string titulo, string descricao, DateTime datamaximaconclusao, string prioridade, string anexo, string tarefaEditada)

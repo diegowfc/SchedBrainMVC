@@ -149,6 +149,9 @@
             this.Controls.Add(this.AcessaEvento);
             this.Controls.Add(this.AcessaContato);
             this.Controls.Add(this.label1);
+            this.MaximizeBox = false;
+            this.MaximumSize = new System.Drawing.Size(1149, 506);
+            this.MinimumSize = new System.Drawing.Size(1149, 506);
             this.Name = "PrincipalView";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "SchedBrain";

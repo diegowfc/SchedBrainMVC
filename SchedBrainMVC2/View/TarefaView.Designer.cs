@@ -173,10 +173,10 @@
             // 
             // btnCadastrar
             // 
-            this.btnCadastrar.Location = new System.Drawing.Point(93, 562);
+            this.btnCadastrar.Location = new System.Drawing.Point(6, 562);
             this.btnCadastrar.Name = "btnCadastrar";
             this.btnCadastrar.Size = new System.Drawing.Size(75, 23);
-            this.btnCadastrar.TabIndex = 6;
+            this.btnCadastrar.TabIndex = 7;
             this.btnCadastrar.Text = "Salvar";
             this.btnCadastrar.UseVisualStyleBackColor = true;
             this.btnCadastrar.Click += new System.EventHandler(this.btnCadastrar_Click);
@@ -201,7 +201,7 @@
             this.txtPesquisar.PlaceholderText = "Pesquisar por título, descrição, período, situação ou prioridade";
             this.txtPesquisar.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.txtPesquisar.Size = new System.Drawing.Size(343, 23);
-            this.txtPesquisar.TabIndex = 0;
+            this.txtPesquisar.TabIndex = 8;
             this.txtPesquisar.TextChanged += new System.EventHandler(this.txtPesquisar_TextChanged);
             // 
             // errorProvider1
@@ -233,7 +233,7 @@
             this.cboContatos.Location = new System.Drawing.Point(6, 312);
             this.cboContatos.Name = "cboContatos";
             this.cboContatos.Size = new System.Drawing.Size(162, 23);
-            this.cboContatos.TabIndex = 10;
+            this.cboContatos.TabIndex = 4;
             // 
             // label1
             // 
@@ -253,7 +253,7 @@
             this.cboEventos.Location = new System.Drawing.Point(6, 356);
             this.cboEventos.Name = "cboEventos";
             this.cboEventos.Size = new System.Drawing.Size(162, 23);
-            this.cboEventos.TabIndex = 12;
+            this.cboEventos.TabIndex = 5;
             // 
             // label2
             // 
@@ -266,10 +266,10 @@
             // 
             // btnLimpar
             // 
-            this.btnLimpar.Location = new System.Drawing.Point(6, 562);
+            this.btnLimpar.Location = new System.Drawing.Point(93, 562);
             this.btnLimpar.Name = "btnLimpar";
             this.btnLimpar.Size = new System.Drawing.Size(75, 23);
-            this.btnLimpar.TabIndex = 13;
+            this.btnLimpar.TabIndex = 6;
             this.btnLimpar.Text = "Limpar";
             this.btnLimpar.UseVisualStyleBackColor = true;
             this.btnLimpar.Click += new System.EventHandler(this.btnLimpar_Click);
@@ -297,6 +297,9 @@
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label3);
+            this.MaximizeBox = false;
+            this.MaximumSize = new System.Drawing.Size(835, 648);
+            this.MinimumSize = new System.Drawing.Size(835, 648);
             this.Name = "TarefaView";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Cadastro de tarefas";

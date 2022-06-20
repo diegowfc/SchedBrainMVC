@@ -119,7 +119,7 @@
             // 
             // btnLimpar
             // 
-            this.btnLimpar.Location = new System.Drawing.Point(131, 345);
+            this.btnLimpar.Location = new System.Drawing.Point(212, 345);
             this.btnLimpar.Name = "btnLimpar";
             this.btnLimpar.Size = new System.Drawing.Size(75, 23);
             this.btnLimpar.TabIndex = 9;
@@ -129,7 +129,7 @@
             // 
             // btnCadastrar
             // 
-            this.btnCadastrar.Location = new System.Drawing.Point(212, 345);
+            this.btnCadastrar.Location = new System.Drawing.Point(131, 345);
             this.btnCadastrar.Name = "btnCadastrar";
             this.btnCadastrar.Size = new System.Drawing.Size(75, 23);
             this.btnCadastrar.TabIndex = 10;
@@ -273,9 +273,11 @@
             this.Controls.Add(this.txtSobrenome);
             this.Controls.Add(this.txtNome);
             this.MaximizeBox = false;
+            this.MaximumSize = new System.Drawing.Size(979, 490);
+            this.MinimumSize = new System.Drawing.Size(979, 490);
             this.Name = "ContatoView";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "Contatos";
+            this.Text = "Cadastro de Contatos";
             this.Load += new System.EventHandler(this.ContatoView_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pcbAnexo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderContato)).EndInit();

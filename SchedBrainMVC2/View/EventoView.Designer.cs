@@ -119,7 +119,7 @@
             // 
             // btnCadastrar
             // 
-            this.btnCadastrar.Location = new System.Drawing.Point(216, 498);
+            this.btnCadastrar.Location = new System.Drawing.Point(135, 498);
             this.btnCadastrar.Name = "btnCadastrar";
             this.btnCadastrar.Size = new System.Drawing.Size(75, 23);
             this.btnCadastrar.TabIndex = 11;
@@ -219,7 +219,7 @@
             // 
             // btnLimpar
             // 
-            this.btnLimpar.Location = new System.Drawing.Point(135, 498);
+            this.btnLimpar.Location = new System.Drawing.Point(216, 498);
             this.btnLimpar.Name = "btnLimpar";
             this.btnLimpar.Size = new System.Drawing.Size(75, 23);
             this.btnLimpar.TabIndex = 10;
@@ -261,8 +261,10 @@
             this.Controls.Add(this.txtLocal);
             this.Controls.Add(this.txtNome);
             this.MaximizeBox = false;
+            this.MaximumSize = new System.Drawing.Size(1051, 573);
+            this.MinimumSize = new System.Drawing.Size(1051, 573);
             this.Name = "EventoView";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Cadastro de eventos";
             this.Load += new System.EventHandler(this.EventoView_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pcbAnexo)).EndInit();
