@@ -41,6 +41,15 @@ namespace SchedBrainMVC2.Controller
         {
             Evento eventoAlvo = Context.Eventos.FirstOrDefault(x => x.NomeEvento == nome)!;
             Context.Eventos.Remove(eventoAlvo);
+
+            if (TarefaController.retornaRelacionamentoEvento(eventoAlvo.ID).Count > 0)
+            {
+                foreach (Tarefa t in TarefaController.retornaRelacionamentoEvento(eventoAlvo.ID))
+                {
+                    t.EventoId = null;
+                    TarefaController.EditaTarefa(t);
+                }
+            }
             Context.SaveChanges();
         }
 

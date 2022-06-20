@@ -203,11 +203,37 @@ namespace SchedBrainMVC2.View
                 try
                 {
                     if (contatoAlvo == null)
-                        ContatoController.InsereContato(contato);
+                    {
+                        try
+                        {
+                            if (ContatoController.ListaContatos().Count > 0)
+                            {
+                                foreach (Contato c in ContatoController.ListaContatos())
+                                {
+                                    if (txtApelido.Text.Trim() == c.Apelido)
+                                        throw new Exception();
+                                    else
+                                        sucesso = true;
+                                }
+                                ContatoController.InsereContato(contato);
+                            }
+                            else
+                            {
+                                sucesso = true;
+                                ContatoController.InsereContato(contato);
+                            }
+                        }
+                        catch (Exception)
+                        {
+                            sucesso = false;
+                            MessageBox.Show("Apelido já está em uso!", "SchedBrain", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
                     else
+                    {
+                        sucesso = true;
                         ContatoController.EditaContato(contatoAlvo);
-
-                    sucesso = true;
+                    }     
                 }
                 catch {}
 

@@ -43,6 +43,16 @@ namespace SchedBrainMVC2.Controller
         {
             Contato contatoAlvo = Context.Contatos.FirstOrDefault(x => x.Apelido == apelido)!;
             Context.Contatos.Remove(contatoAlvo);
+
+            if(TarefaController.retornaRelacionamentoContato(contatoAlvo.ID).Count > 0)
+            {
+                foreach (Tarefa t in TarefaController.retornaRelacionamentoContato(contatoAlvo.ID))
+                {
+                    t.ContatoId = null;
+                    TarefaController.EditaTarefa(t);
+                }
+            }
+
             Context.SaveChanges();
         }
 

@@ -66,5 +66,15 @@ namespace SchedBrainMVC2.Controller
         {
             return Context.Tarefas.Where(x => x.Titulo == tituloTarefa).FirstOrDefault();
         }
+
+        internal static List<Tarefa> retornaRelacionamentoContato(int contatoId)
+        {
+            return Context.Tarefas.Where(x => x.ContatoId == contatoId).ToList();
+        }
+
+        internal static List<Tarefa> retornaRelacionamentoEvento(int eventoId)
+        {
+            return Context.Tarefas.Where(x => x.EventoId == eventoId).ToList();
+        }
     }
 }
