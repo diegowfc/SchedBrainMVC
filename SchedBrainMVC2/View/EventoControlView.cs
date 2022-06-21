@@ -171,7 +171,7 @@ namespace SchedBrainMVC2.View
         {
             EventoView f1 = (EventoView)FindForm();
             string eventoEditado = NomeEvento;
-            f1.editaCampo(NomeEvento, LocalEvento, DescricaoEvento, DataInicio, DataTermino, PeriodicidadeEvento, StatusEvento, Foto, eventoEditado);
+            f1.editaCampo(NomeEvento, LocalEvento, DescricaoEvento, DataInicio, DataTermino, PeriodicidadeEvento, StatusEvento, Foto, eventoEditado, ContextMenuStrip);
         }
     }
 }

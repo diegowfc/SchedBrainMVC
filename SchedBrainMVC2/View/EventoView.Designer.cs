@@ -77,7 +77,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point);
-            this.label2.Location = new System.Drawing.Point(712, 12);
+            this.label2.Location = new System.Drawing.Point(634, 12);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(314, 13);
             this.label2.TabIndex = 54;
@@ -100,7 +100,7 @@
             this.flowLayoutPanel1.AutoScroll = true;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(325, 38);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(698, 483);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(615, 483);
             this.flowLayoutPanel1.TabIndex = 53;
             // 
             // dtpDataTermino
@@ -241,7 +241,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1035, 534);
+            this.ClientSize = new System.Drawing.Size(952, 534);
             this.Controls.Add(this.lstContatos);
             this.Controls.Add(this.btnLimpar);
             this.Controls.Add(this.rdoCancelado);
@@ -261,8 +261,8 @@
             this.Controls.Add(this.txtLocal);
             this.Controls.Add(this.txtNome);
             this.MaximizeBox = false;
-            this.MaximumSize = new System.Drawing.Size(1051, 573);
-            this.MinimumSize = new System.Drawing.Size(1051, 573);
+            this.MaximumSize = new System.Drawing.Size(968, 573);
+            this.MinimumSize = new System.Drawing.Size(968, 573);
             this.Name = "EventoView";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Cadastro de eventos";

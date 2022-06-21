@@ -108,7 +108,7 @@ namespace SchedBrainMVC2.View
             TarefaView f1 = (TarefaView)FindForm();
 
             string tarefaEditada = Titulo;
-            f1.editaCampo(Titulo, Descricao, Horario, Prioridade, Anexo, tarefaEditada);
+            f1.editaCampo(Titulo, Descricao, Horario, Prioridade, Anexo, tarefaEditada, ContextMenuStrip);
         }
 
         private void concluirToolStripMenuItem_Click(object sender, EventArgs e)

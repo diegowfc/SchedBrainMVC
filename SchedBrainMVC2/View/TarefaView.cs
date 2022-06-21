@@ -82,13 +82,15 @@ namespace SchedBrainMVC2.View
             txtTarefaTitulo.Focus();
         }
 
-        public void editaCampo(string titulo, string descricao, DateTime datamaximaconclusao, string prioridade, string anexo, string tarefaEditada)
+        public void editaCampo(string titulo, string descricao, DateTime datamaximaconclusao, string prioridade, string anexo, string tarefaEditada, ContextMenuStrip cms)
         {
             tarefaAlvo = TarefaController.retornaTarefa(tarefaEditada);
             rdLembreteNao.Visible = true;
             rdLembreteSim.Visible = true;
             imagemAlterada = true;
             pcbAnexo.Tag = anexo.ToString();
+
+            cms.Enabled = false;
 
             try
             {

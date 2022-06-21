@@ -102,9 +102,10 @@
             // 
             // flpTarefaPrincipal
             // 
-            this.flpTarefaPrincipal.Location = new System.Drawing.Point(818, 175);
+            this.flpTarefaPrincipal.AutoScroll = true;
+            this.flpTarefaPrincipal.Location = new System.Drawing.Point(807, 175);
             this.flpTarefaPrincipal.Name = "flpTarefaPrincipal";
-            this.flpTarefaPrincipal.Size = new System.Drawing.Size(303, 221);
+            this.flpTarefaPrincipal.Size = new System.Drawing.Size(323, 221);
             this.flpTarefaPrincipal.TabIndex = 7;
             // 
             // label2

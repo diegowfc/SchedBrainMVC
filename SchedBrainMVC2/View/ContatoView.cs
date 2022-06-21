@@ -22,6 +22,7 @@ namespace SchedBrainMVC2.View
 
         bool contatoEditado = false, imagemAlterada = false;
         Contato contatoAlvo;
+        string guardaApelido = "";
 
         private void ContatoView_Load(object sender, EventArgs e)
         {
@@ -63,6 +64,8 @@ namespace SchedBrainMVC2.View
         /// <param name="contato"></param>
         public void editaContato(Contato contatoAlvo)
         {
+            guardaApelido = contatoAlvo.Apelido;
+
             try
             {
                 if (contatoAlvo.Imagem != "")
@@ -157,6 +160,32 @@ namespace SchedBrainMVC2.View
             {
                 errorProviderContato.SetError(rdoProfissional, "Escolha um tipo: Profissional ou Pessoal!");
                 erros = true;
+            }
+
+            if(contatoAlvo != null)
+            {
+                if(txtApelido.Text.Trim() != guardaApelido)
+                {
+                    foreach(Contato c in ContatoController.ListaContatos())
+                    {
+                        if(c.Apelido == txtApelido.Text.Trim())
+                        {
+                            errorProviderContato.SetError(txtApelido, "Apelido em uso!");
+                            erros = true;
+                        }
+                    }
+                }
+            }
+            else
+            {
+                foreach (Contato c in ContatoController.ListaContatos())
+                {
+                    if (c.Apelido == txtApelido.Text.Trim())
+                    {
+                        errorProviderContato.SetError(txtApelido, "Apelido em uso!");
+                        erros = true;
+                    }
+                }
             }
 
             if (chkFavorito.Checked == true)

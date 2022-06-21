@@ -61,6 +61,7 @@ namespace SchedBrainMVC2.View
                 TarefaControlView tc = new TarefaControlView(flpTarefaPrincipal);
                 tc.SalvaTarefa(tarefa);
                 flpTarefaPrincipal.Controls.Add(tc);
+                tc.ContextMenuStrip = null;
             }
         }
 

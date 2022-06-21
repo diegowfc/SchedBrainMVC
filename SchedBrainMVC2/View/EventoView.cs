@@ -136,12 +136,14 @@ namespace SchedBrainMVC2.View
         /// <param name="periodicidade"></param>
         /// <param name="status"></param>
         /// <param name="foto"></param>
-        public void editaCampo(string nomeEvento, string localEvento, string descricao, DateTime inicio, DateTime termino, string periodicidade, string status, string foto, string eventoEditado)
+        public void editaCampo(string nomeEvento, string localEvento, string descricao, DateTime inicio, DateTime termino, string periodicidade, string status, string foto, string eventoEditado, ContextMenuStrip cms)
         {
             eventoAlvo = EventoController.retornaEvento(eventoEditado);
             imagemAlterada = true;
             rdoCancelado.Visible = true;
             pcbAnexo.Tag = foto.ToString();
+
+            cms.Enabled = false;
 
             try
             {
@@ -274,8 +276,8 @@ namespace SchedBrainMVC2.View
                 if (sucesso) 
                 {
                     MessageBox.Show("Evento salvo com sucesso!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    limpaCampo();
                     preenchePainel();
+                    limpaCampo();
                 }
                 else MessageBox.Show("Falha na inserção", "SchedBrain", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
