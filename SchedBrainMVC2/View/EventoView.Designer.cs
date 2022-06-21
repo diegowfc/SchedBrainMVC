@@ -54,6 +54,7 @@
             // 
             // rdoCancelado
             // 
+            this.rdoCancelado.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.rdoCancelado.AutoSize = true;
             this.rdoCancelado.Location = new System.Drawing.Point(210, 473);
             this.rdoCancelado.Name = "rdoCancelado";
@@ -66,6 +67,8 @@
             // 
             // txtPesquisar
             // 
+            this.txtPesquisar.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.txtPesquisar.Location = new System.Drawing.Point(325, 8);
             this.txtPesquisar.Name = "txtPesquisar";
             this.txtPesquisar.PlaceholderText = "Pesquise por Nome, Local, Datas, Status e Contatos";
@@ -75,6 +78,7 @@
             // 
             // label2
             // 
+            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point);
             this.label2.Location = new System.Drawing.Point(634, 12);
@@ -85,6 +89,8 @@
             // 
             // txtDescricao
             // 
+            this.txtDescricao.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.txtDescricao.Location = new System.Drawing.Point(10, 186);
             this.txtDescricao.Multiline = true;
             this.txtDescricao.Name = "txtDescricao";
@@ -105,6 +111,7 @@
             // 
             // dtpDataTermino
             // 
+            this.dtpDataTermino.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.dtpDataTermino.Location = new System.Drawing.Point(10, 300);
             this.dtpDataTermino.Name = "dtpDataTermino";
             this.dtpDataTermino.Size = new System.Drawing.Size(281, 23);
@@ -112,6 +119,7 @@
             // 
             // dtpDataInicio
             // 
+            this.dtpDataInicio.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.dtpDataInicio.Location = new System.Drawing.Point(10, 256);
             this.dtpDataInicio.Name = "dtpDataInicio";
             this.dtpDataInicio.Size = new System.Drawing.Size(281, 23);
@@ -119,6 +127,7 @@
             // 
             // btnCadastrar
             // 
+            this.btnCadastrar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnCadastrar.Location = new System.Drawing.Point(135, 498);
             this.btnCadastrar.Name = "btnCadastrar";
             this.btnCadastrar.Size = new System.Drawing.Size(75, 23);
@@ -141,6 +150,7 @@
             // 
             // rdoAndamento
             // 
+            this.rdoAndamento.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.rdoAndamento.AutoSize = true;
             this.rdoAndamento.Location = new System.Drawing.Point(96, 473);
             this.rdoAndamento.Name = "rdoAndamento";
@@ -152,6 +162,7 @@
             // 
             // rdoConcluido
             // 
+            this.rdoConcluido.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.rdoConcluido.AutoSize = true;
             this.rdoConcluido.Location = new System.Drawing.Point(10, 473);
             this.rdoConcluido.Name = "rdoConcluido";
@@ -163,6 +174,7 @@
             // 
             // cboPeriodicidade
             // 
+            this.cboPeriodicidade.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.cboPeriodicidade.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboPeriodicidade.Items.AddRange(new object[] {
             "<<PERIODICIDADE>>",
@@ -180,6 +192,7 @@
             // 
             // lblDataTermino
             // 
+            this.lblDataTermino.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.lblDataTermino.AutoSize = true;
             this.lblDataTermino.Location = new System.Drawing.Point(10, 282);
             this.lblDataTermino.Name = "lblDataTermino";
@@ -189,6 +202,7 @@
             // 
             // label1
             // 
+            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(10, 238);
             this.label1.Name = "label1";
@@ -219,6 +233,7 @@
             // 
             // btnLimpar
             // 
+            this.btnLimpar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnLimpar.Location = new System.Drawing.Point(216, 498);
             this.btnLimpar.Name = "btnLimpar";
             this.btnLimpar.Size = new System.Drawing.Size(75, 23);
@@ -229,6 +244,7 @@
             // 
             // lstContatos
             // 
+            this.lstContatos.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.lstContatos.FormattingEnabled = true;
             this.lstContatos.ItemHeight = 15;
             this.lstContatos.Location = new System.Drawing.Point(12, 358);
@@ -260,8 +276,6 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtLocal);
             this.Controls.Add(this.txtNome);
-            this.MaximizeBox = false;
-            this.MaximumSize = new System.Drawing.Size(968, 573);
             this.MinimumSize = new System.Drawing.Size(968, 573);
             this.Name = "EventoView";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;

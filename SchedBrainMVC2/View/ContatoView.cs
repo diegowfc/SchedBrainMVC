@@ -269,7 +269,7 @@ namespace SchedBrainMVC2.View
                 if (sucesso)
                 {
                     preenchePainel();
-                    DialogResult dr = MessageBox.Show("Contato salvo com sucesso!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    DialogResult dr = MessageBox.Show("Contato salvo com sucesso!", "SchedBrain", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     contatoEditado = false;
                     resetaFormulario();
                     contatoAlvo = null;
@@ -326,6 +326,7 @@ namespace SchedBrainMVC2.View
                 ContatoController.ExcluiContato(apelido);
                 contatoEditado = false;
                 resetaFormulario();
+                MessageBox.Show("Contato Excluído com sucesso!", "SchedBrain", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 preenchePainel();
             }
         }

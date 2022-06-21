@@ -150,6 +150,7 @@ namespace SchedBrainMVC2.View
                 EventoController.ExcluiEvento(NomeEvento);
                 painel.Controls.Clear();
                 AtualizaPainel();
+                MessageBox.Show("Evento excluído com sucesso!", "SchedBrain", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 

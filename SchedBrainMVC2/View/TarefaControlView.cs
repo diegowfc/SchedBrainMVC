@@ -136,6 +136,7 @@ namespace SchedBrainMVC2.View
                 TarefaController.ExcluiTarefa(Titulo);
                 painel.Controls.Clear();
                 Atualizar();
+                MessageBox.Show("Tarefa excluída com sucesso!", "SchedBrain", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 

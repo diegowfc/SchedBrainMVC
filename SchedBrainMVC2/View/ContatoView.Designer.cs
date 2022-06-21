@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.txtPesquisar = new System.Windows.Forms.TextBox();
             this.flpContatos = new System.Windows.Forms.FlowLayoutPanel();
             this.dtpDataNascimento = new System.Windows.Forms.DateTimePicker();
             this.pcbAnexo = new System.Windows.Forms.PictureBox();
@@ -45,22 +44,15 @@
             this.chkFavorito = new System.Windows.Forms.CheckBox();
             this.errorProviderContato = new System.Windows.Forms.ErrorProvider(this.components);
             this.btnExcluir = new System.Windows.Forms.Button();
+            this.mtxTelefone = new System.Windows.Forms.MaskedTextBox();
+            this.txtPesquisar = new System.Windows.Forms.TextBox();
             this.btnPesquisar = new System.Windows.Forms.Button();
             this.btnEditar = new System.Windows.Forms.Button();
             this.txtEditar = new System.Windows.Forms.TextBox();
             this.chkPesquisa = new System.Windows.Forms.CheckBox();
-            this.mtxTelefone = new System.Windows.Forms.MaskedTextBox();
             ((System.ComponentModel.ISupportInitialize)(this.pcbAnexo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderContato)).BeginInit();
             this.SuspendLayout();
-            // 
-            // txtPesquisar
-            // 
-            this.txtPesquisar.Location = new System.Drawing.Point(324, 11);
-            this.txtPesquisar.Name = "txtPesquisar";
-            this.txtPesquisar.PlaceholderText = "Pesquise para filtrar um contato através de suas informações";
-            this.txtPesquisar.Size = new System.Drawing.Size(329, 23);
-            this.txtPesquisar.TabIndex = 68;
             // 
             // flpContatos
             // 
@@ -201,9 +193,28 @@
             this.btnExcluir.Visible = false;
             this.btnExcluir.Click += new System.EventHandler(this.btnExcluir_Click);
             // 
+            // mtxTelefone
+            // 
+            this.mtxTelefone.Location = new System.Drawing.Point(9, 247);
+            this.mtxTelefone.Mask = "(99) 00000-0000";
+            this.mtxTelefone.Name = "mtxTelefone";
+            this.mtxTelefone.Size = new System.Drawing.Size(278, 23);
+            this.mtxTelefone.TabIndex = 4;
+            // 
+            // txtPesquisar
+            // 
+            this.txtPesquisar.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtPesquisar.Location = new System.Drawing.Point(324, 11);
+            this.txtPesquisar.Name = "txtPesquisar";
+            this.txtPesquisar.PlaceholderText = "Pesquise para filtrar um contato através de suas informações";
+            this.txtPesquisar.Size = new System.Drawing.Size(329, 23);
+            this.txtPesquisar.TabIndex = 68;
+            // 
             // btnPesquisar
             // 
-            this.btnPesquisar.Location = new System.Drawing.Point(779, 9);
+            this.btnPesquisar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnPesquisar.Location = new System.Drawing.Point(659, 9);
             this.btnPesquisar.Name = "btnPesquisar";
             this.btnPesquisar.Size = new System.Drawing.Size(125, 23);
             this.btnPesquisar.TabIndex = 70;
@@ -213,6 +224,7 @@
             // 
             // btnEditar
             // 
+            this.btnEditar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnEditar.Location = new System.Drawing.Point(659, 41);
             this.btnEditar.Name = "btnEditar";
             this.btnEditar.Size = new System.Drawing.Size(125, 23);
@@ -223,6 +235,8 @@
             // 
             // txtEditar
             // 
+            this.txtEditar.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.txtEditar.Location = new System.Drawing.Point(324, 40);
             this.txtEditar.Name = "txtEditar";
             this.txtEditar.PlaceholderText = "Busque um contato pelo apelido para editá-lo ou excluí-lo";
@@ -231,21 +245,14 @@
             // 
             // chkPesquisa
             // 
+            this.chkPesquisa.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.chkPesquisa.AutoSize = true;
-            this.chkPesquisa.Location = new System.Drawing.Point(659, 13);
+            this.chkPesquisa.Location = new System.Drawing.Point(790, 12);
             this.chkPesquisa.Name = "chkPesquisa";
             this.chkPesquisa.Size = new System.Drawing.Size(114, 19);
             this.chkPesquisa.TabIndex = 73;
             this.chkPesquisa.Text = "Apenas favoritos";
             this.chkPesquisa.UseVisualStyleBackColor = true;
-            // 
-            // mtxTelefone
-            // 
-            this.mtxTelefone.Location = new System.Drawing.Point(9, 247);
-            this.mtxTelefone.Mask = "(99) 00000-0000";
-            this.mtxTelefone.Name = "mtxTelefone";
-            this.mtxTelefone.Size = new System.Drawing.Size(278, 23);
-            this.mtxTelefone.TabIndex = 4;
             // 
             // ContatoView
             // 
@@ -272,8 +279,6 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtSobrenome);
             this.Controls.Add(this.txtNome);
-            this.MaximizeBox = false;
-            this.MaximumSize = new System.Drawing.Size(979, 490);
             this.MinimumSize = new System.Drawing.Size(979, 490);
             this.Name = "ContatoView";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
@@ -287,7 +292,6 @@
         }
 
         #endregion
-        private TextBox txtPesquisar;
         private FlowLayoutPanel flpContatos;
         private DateTimePicker dtpDataNascimento;
         private PictureBox pcbAnexo;
@@ -302,11 +306,12 @@
         private TextBox txtEmail;
         private CheckBox chkFavorito;
         private ErrorProvider errorProviderContato;
+        private Button btnExcluir;
+        private MaskedTextBox mtxTelefone;
+        private CheckBox chkPesquisa;
+        private TextBox txtEditar;
         private Button btnEditar;
         private Button btnPesquisar;
-        private Button btnExcluir;
-        private TextBox txtEditar;
-        private CheckBox chkPesquisa;
-        private MaskedTextBox mtxTelefone;
+        private TextBox txtPesquisar;
     }
 }

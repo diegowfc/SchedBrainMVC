@@ -275,7 +275,7 @@ namespace SchedBrainMVC2.View
 
                 if (sucesso) 
                 {
-                    MessageBox.Show("Evento salvo com sucesso!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Evento salvo com sucesso!", "SchedBrain", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     preenchePainel();
                     limpaCampo();
                 }
